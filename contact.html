@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منتدى النص والقارئ - تواصل معنا</title>
+    
+    <style>
+        /* التنسيقات العامة للحفاظ على هوية الموقع */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background-color: #f4f1ea;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .header-nav-container {
+            background-color: #2c3e50;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header {
+            color: white;
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-content { flex: 1; text-align: right; }
+        header h1 { margin: 0; font-size: 32px; font-weight: 700; }
+        header p { margin: 5px 0 0; font-size: 16px; opacity: 0.9; }
+        
+        .logo-container { width: 80px; height: 80px; margin-right: 20px; }
+        .logo { max-width: 100%; max-height: 100%; object-fit: contain; }
+
+        nav {
+            background-color: rgba(211, 84, 0, 0.9);
+            padding: 10px 30px;
+            text-align: right;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        nav a {
+            color: white; text-decoration: none; margin: 0 15px;
+            font-size: 17px; font-weight: 600; transition: color 0.3s ease;
+        }
+
+        nav a:hover, nav a.active { color: #f1c40f; }
+
+        main {
+            flex: 1; max-width: 1000px; margin: 40px auto; padding: 0 20px; width: 100%; box-sizing: border-box;
+        }
+
+        .page-title {
+            text-align: center; color: #2c3e50; margin-bottom: 40px; border-bottom: 2px solid #d35400; padding-bottom: 10px; display: inline-block;
+        }
+
+        /* تنسيق قسم التواصل (مقسم إلى عمودين) */
+        .contact-wrapper {
+            display: flex;
+            gap: 40px;
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-top: 5px solid #2c3e50;
+        }
+
+        /* العمود الأول: معلومات التواصل */
+        .contact-info {
+            flex: 1;
+            padding-left: 20px;
+            border-left: 1px solid #eee;
+        }
+
+        .contact-info h3 {
+            color: #d35400;
+            font-size: 22px;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        .contact-info p {
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .info-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .info-list li {
+            margin-bottom: 15px;
+            font-size: 16px;
+            color: #444;
+            display: flex;
+            align-items: center;
+        }
+
+        .info-list li strong {
+            margin-left: 10px;
+            color: #2c3e50;
+        }
+
+        .info-list a {
+            color: #d35400;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .info-list a:hover {
+            text-decoration: underline;
+        }
+
+        /* العمود الثاني: نموذج المراسلة */
+        .contact-form-container {
+            flex: 1.5;
+        }
+
+        .contact-form-container h3 {
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 22px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 15px;
+            box-sizing: border-box; /* لضمان عدم خروج الحقل عن الإطار */
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: #d35400;
+            box-shadow: 0 0 5px rgba(211, 84, 0, 0.2);
+        }
+
+        .submit-btn {
+            background-color: #d35400;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background-color: #e67e22;
+        }
+
+        footer { background-color: #2c3e50; color: #ecf0f1; padding: 20px; text-align: center; margin-top: 50px; }
+
+        /* تعديلات للشاشات الصغيرة (الهواتف) */
+        @media (max-width: 768px) {
+            .contact-wrapper {
+                flex-direction: column;
+                padding: 20px;
+            }
+            .contact-info {
+                border-left: none;
+                border-bottom: 1px solid #eee;
+                padding-left: 0;
+                padding-bottom: 20px;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-nav-container">
+        <header>
+            <div class="header-content">
+                <h1>منتدى النص والقارئ</h1>
+                <p>مساحتكم الثقافية للإبداع والمناقشة وتشارك الشغف</p>
+            </div>
+            <div class="logo-container">
+                <img src="logo.png" alt="شعار المنتدى" class="logo">
+            </div>
+        </header>
+
+        <nav>
+            <a href="index.html">الرئيسية</a>
+            <a href="events.html">الأنشطة والفعاليات</a>
+            <a href="contact.html" class="active">تواصل معنا</a>
+        </nav>
+    </div>
+
+    <main>
+        <div style="text-align: center;">
+            <h2 class="page-title">نسعد بتواصلكم</h2>
+        </div>
+
+        <div class="contact-wrapper">
+            <div class="contact-info">
+                <h3>معلومات المنتدى</h3>
+                <p>نحن دائماً نرحب بأفكاركم، مقترحاتكم، ورغبتكم في الانضمام إلى مجتمعنا الثقافي. لا تترددوا في مراسلتنا.</p>
+                
+                <ul class="info-list">
+                    <li>📍 <strong>المكان:</strong> جامعة الموصل - كلية التربية</li>
+                    <li>👥 <strong>فريق الإدارة:</strong> مراد وشيماء</li>
+                    <li>📸 <strong>إنستقرام:</strong> <a href="#" target="https://www.instagram.com/muntada25?igsh=NDBqbGR2OWFwcHp4">صفحة المنتدى الرسمية</a></li>
+                    <li>📧 <strong>البريد:</strong> muradalahmed24@gmail.com</li>
+                </ul>
+            </div>
+
+            <div class="contact-form-container">
+                <h3>أرسل لنا رسالة</h3>
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <label for="name">الاسم الكريم:</label>
+                        <input type="text" id="name" name="name" placeholder="اكتب اسمك هنا" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">البريد الإلكتروني:</label>
+                        <input type="email" id="email" name="email" placeholder="example@gmail.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">رسالتك:</label>
+                        <textarea id="message" name="message" rows="5" placeholder="اكتب استفسارك أو اقتراحك هنا..." required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">إرسال الرسالة ✉️</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 منتدى النص والقارئ. جميع الحقوق محفوظة.</p>
+    </footer>
+
+</body>
+</html>

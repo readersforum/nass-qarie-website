@@ -271,6 +271,31 @@
                 font-size: 20px;
             }
         }
+
+/* 🌟 تأثيرات الحركة (Animations) السحرية 🌟 */
+        
+        /* 1. تعريف الحركة: من الشفافية والأسفل -> إلى الظهور والمكان الطبيعي */
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 2. تطبيق الحركة على المربعات الرئيسية في كل الصفحات */
+        .container, .event-item, .contact-wrapper {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0; /* نخفيها في البداية لتظهر مع الحركة */
+        }
+
+        /* 3. خدعة التتابع: جعل الفعاليات تظهر واحدة تلو الأخرى */
+        .event-item:nth-child(1) { animation-delay: 0.1s; }
+        .event-item:nth-child(2) { animation-delay: 0.3s; }
+        .event-item:nth-child(3) { animation-delay: 0.5s; }
     </style>
 </head>
 <body>

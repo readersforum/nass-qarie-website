@@ -6,10 +6,11 @@
     <title>منتدى النص والقارئ - الأنشطة والفعاليات</title>
     
     <style>
-        /* التنسيقات العامة والترويسة الموحدة */
+        /* التنسيقات العامة */
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; background-color: #f4f1ea; color: #333; display: flex; flex-direction: column; min-height: 100vh; }
-        .header-nav-container { background-color: #2c3e50; position: sticky; top: 0; z-index: 1000; }
-        header { color: white; padding: 20px 30px; display: flex; justify-content: space-between; align-items: center; }
+        
+        /* الترويسة (تختفي عند النزول) */
+        header { background-color: #2c3e50; color: white; padding: 20px 30px; display: flex; justify-content: space-between; align-items: center; }
         .header-content { flex: 1; text-align: right; }
         header h1 { margin: 0; font-size: 32px; font-weight: 700; }
         header p { margin: 5px 0 0; font-size: 16px; opacity: 0.9; }
@@ -18,8 +19,8 @@
         .logo-container { width: 90px; height: 90px; margin-right: 20px; }
         .logo { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
 
-        /* شريط التنقل */
-        nav { display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap; padding: 10px 5px; background-color: rgba(211, 84, 0, 0.9); border-top: 1px solid rgba(255, 255, 255, 0.1); }
+        /* شريط التنقل (اللاصق) */
+        nav { position: sticky; top: 0; z-index: 1000; display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap; padding: 10px 5px; background-color: rgba(211, 84, 0, 0.98); box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
         nav a { color: white; text-decoration: none; margin: 5px 10px; padding: 8px 15px; font-size: 16px; font-weight: 600; border-radius: 5px; transition: all 0.3s ease-in-out; }
         nav a:hover, nav a.active { color: #2c3e50; background-color: #f1c40f; transform: translateY(-3px); box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
 
@@ -27,8 +28,18 @@
         main { flex: 1; max-width: 900px; margin: 40px auto; padding: 0 20px; width: 100%; box-sizing: border-box; }
         .page-title { text-align: center; color: #2c3e50; margin-bottom: 40px; border-bottom: 2px solid #d35400; padding-bottom: 10px; display: inline-block; }
         .event-list { display: flex; flex-direction: column; gap: 30px; }
-        .event-item { background: white; padding: 25px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); border-right: 5px solid #2c3e50; }
+        
+        /* الحركات (Animations) */
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(40px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        .event-item { background: white; padding: 25px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); border-right: 5px solid #2c3e50; animation: fadeInUp 0.8s ease-out forwards; opacity: 0; }
         .event-item.upcoming { border-right-color: #d35400; background-color: #fffaf7; }
+        .event-item:nth-child(1) { animation-delay: 0.1s; }
+        .event-item:nth-child(2) { animation-delay: 0.3s; }
+        .event-item:nth-child(3) { animation-delay: 0.5s; }
+        
         .event-date { display: inline-block; background-color: #eee; padding: 5px 15px; border-radius: 20px; font-size: 14px; color: #555; margin-bottom: 15px; font-weight: bold; }
         .upcoming .event-date { background-color: #fdebd0; color: #d35400; }
         .event-item h3 { margin: 0 0 10px; color: #2c3e50; font-size: 22px; }
@@ -46,50 +57,24 @@
             header p { font-size: 14px; }
             nav a { font-size: 14px; margin: 5px 3px; padding: 8px 10px; }
         }
-
-/* 🌟 تأثيرات الحركة (Animations) السحرية 🌟 */
-        
-        /* 1. تعريف الحركة: من الشفافية والأسفل -> إلى الظهور والمكان الطبيعي */
-        @keyframes fadeInUp {
-            0% {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* 2. تطبيق الحركة على المربعات الرئيسية في كل الصفحات */
-        .container, .event-item, .contact-wrapper {
-            animation: fadeInUp 0.8s ease-out forwards;
-            opacity: 0; /* نخفيها في البداية لتظهر مع الحركة */
-        }
-
-        /* 3. خدعة التتابع: جعل الفعاليات تظهر واحدة تلو الأخرى */
-        .event-item:nth-child(1) { animation-delay: 0.1s; }
-        .event-item:nth-child(2) { animation-delay: 0.3s; }
-        .event-item:nth-child(3) { animation-delay: 0.5s; }
     </style>
 </head>
 <body>
-    <div class="header-nav-container">
-        <header>
-            <div class="header-content">
-                <h1>منتدى النص والقارئ</h1>
-                <p>مساحتكم الثقافية للإبداع والمناقشة وتشارك الشغف</p>
-            </div>
-            <div class="logo-container">
-                <img src="logo.jpg" alt="شعار المنتدى" class="logo">
-            </div>
-        </header>
-        <nav>
-            <a href="index.html">الرئيسية</a>
-            <a href="events.html" class="active">الأنشطة والفعاليات</a>
-            <a href="contact.html">تواصل معنا</a>
-        </nav>
-    </div>
+    <header>
+        <div class="header-content">
+            <h1>منتدى النص والقارئ</h1>
+            <p>مساحتكم الثقافية للإبداع والمناقشة وتشارك الشغف</p>
+        </div>
+        <div class="logo-container">
+            <img src="logo.jpg" alt="شعار المنتدى" class="logo">
+        </div>
+    </header>
+
+    <nav>
+        <a href="index.html">الرئيسية</a>
+        <a href="events.html" class="active">الأنشطة والفعاليات</a>
+        <a href="contact.html">تواصل معنا</a>
+    </nav>
 
     <main>
         <div style="text-align: center;">
@@ -115,6 +100,7 @@
                 <div class="event-location">📍 انطلاقة إلكترونية وميدانية</div>
             </div>
         </div>
+        <div style="height: 300px;"></div> 
     </main>
 
     <footer>

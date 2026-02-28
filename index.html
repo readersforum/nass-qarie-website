@@ -3,355 +3,144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منتدى النص والقارئ - الصفحة الرئيسية</title>
+    <title>منتدى النص والقارئ</title>
     
     <style>
-        /* التنسيقات العامة للصفحة */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            background-color: #f4f1ea; /* لون خلفية مريح للقراءة يشبه الورق */
-            color: #333;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh; /* ليأخذ التذييل مكانه الصحيح في الأسفل */
+        /* التنسيقات العامة */
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            margin: 0; 
+            background-color: #f4f1ea; 
+            color: #333; 
+            display: flex; 
+            flex-direction: column; 
+            min-height: 100vh; 
         }
-
-        /* حاوية الترويسة وشريط التنقل */
-        .header-nav-container {
-            background-color: #2c3e50; /* أزرق داكن */
-            position: sticky; /* جعلها ثابتة عند التمرير */
-            top: 0;
-            z-index: 1000;
+        
+        /* الترويسة (ستختفي عند النزول) */
+        header { 
+            background-color: #2c3e50; 
+            color: white; 
+            padding: 20px 30px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
         }
+        .header-content { flex: 1; text-align: right; }
+        header h1 { margin: 0; font-size: 32px; font-weight: 700; }
+        header p { margin: 5px 0 0; font-size: 16px; opacity: 0.9; }
+        
+        /* الشعار الدائري */
+        .logo-container { width: 90px; height: 90px; margin-right: 20px; }
+        .logo { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
 
-        /* تنسيق الترويسة العلوية */
-        header {
-            color: white;
-            padding: 20px 30px;
-            display: flex;
-            justify-content: space-between; /* توزيع المحتوى بين الأطراف */
-            align-items: center; /* توسيط عمودي */
+        /* 🌟 شريط التنقل (اللاصق) 🌟 */
+        nav { 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+            display: flex; 
+            flex-direction: row; 
+            justify-content: center; 
+            flex-wrap: wrap; 
+            padding: 10px 5px; 
+            background-color: rgba(211, 84, 0, 0.98); 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
         }
-
-        .header-content {
-            flex: 1; /* تأخذ المساحة المتبقية */
-            text-align: right;
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 32px;
-            font-weight: 700;
-        }
-
-        header p {
-            margin: 5px 0 0;
-            font-size: 16px;
-            opacity: 0.9;
-        }
-
-        .logo-container {
-            width: 80px; /* عرض الشعار */
-            height: 80px;
-            margin-right: 20px; /* مسافة بين الشعار والنص */
-        }
-
-        .logo {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: cover; /* يحافظ على جودة الصورة ويمنع تشوهها داخل الدائرة */
-    border-radius: 50%; /* ✨ هذا هو السطر السحري الذي يقص الحواف ويحولها لدائرة */
-}
-
-        /* تنسيق شريط التنقل */
-        nav {
-            background-color: rgba(211, 84, 0, 0.9); /* برتقالي داكن شفاف قليلاً */
-            padding: 10px 30px;
-            text-align: right;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        /* تنسيق أزرار التنقل الأساسية مع الحركة الناعمة */
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 10px;
-            padding: 8px 15px; /* إضافة مساحة داخلية للزر ليصبح مثل الصندوق */
-            font-size: 16px;
-            font-weight: 600;
-            border-radius: 5px; /* حواف دائرية للزر */
-            /* ⬇️ هذا هو سطر السحر الذي يجعل أي تغيير يحدث بنعومة خلال 0.3 ثانية */
+        nav a { 
+            color: white; 
+            text-decoration: none; 
+            margin: 5px 10px; 
+            padding: 8px 15px; 
+            font-size: 16px; 
+            font-weight: 600; 
+            border-radius: 5px; 
             transition: all 0.3s ease-in-out; 
         }
-
-        /* التأثير عند تمرير الفأرة أو لمس الزر */
-        nav a:hover, nav a.active {
-            color: #2c3e50; /* تغيير لون النص إلى الأزرق الداكن */
-            background-color: #f1c40f; /* تغيير خلفية الزر إلى الأصفر/الذهبي */
-            transform: translateY(-3px); /* ⬇️ حركة فيزيائية ترفع الزر للأعلى قليلاً */
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* إضافة ظل خفيف تحت الزر ليعطي إحساساً بالعمق */
+        nav a:hover, nav a.active { 
+            color: #2c3e50; 
+            background-color: #f1c40f; 
+            transform: translateY(-3px); 
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2); 
         }
 
-        /* حاوية المحتوى الرئيسي */
-        main {
-            flex: 1; /* تأخذ المساحة المتبقية */
-            max-width: 900px;
-            margin: 40px auto; /* لتوسيط المحتوى في الشاشة */
-            padding: 0 20px;
-        }
-
-        .hero-section {
-            background: white;
-            padding: 40px;
-            border-radius: 8px; /* حواف دائرية */
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* ظل خفيف */
-            margin-bottom: 30px;
-        }
-
-        .hero-section h2 {
-            color: #2c3e50;
-            margin-top: 0;
-            font-size: 28px;
-        }
-
-        .hero-section p {
-            font-size: 18px;
-            line-height: 1.8;
-            color: #555;
-        }
-
-        /* تنسيق بطاقة الفعاليات */
-        .event-card {
-            background: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            border-right: 6px solid #d35400; /* خط جانبي مميز */
-            position: relative;
-        }
-
-        .event-card::before {
-            content: '';
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            width: 15px;
-            height: 15px;
-            background-color: #d35400;
-            border-radius: 50%;
-            animation: pulse 2s infinite; /* علامة متحركة */
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(0.9); opacity: 0.7; }
-            50% { transform: scale(1); opacity: 1; }
-            100% { transform: scale(0.9); opacity: 0.7; }
-        }
-
-        .event-card h3 {
-            color: #2c3e50;
-            margin: 0 0 15px;
-            font-size: 24px;
-        }
-
-        .event-info p {
-            margin: 10px 0;
-            font-size: 17px;
-            line-height: 1.7;
-        }
-
-        .event-meta {
-            color: #7f8c8d;
-            font-size: 15px;
-            margin-top: 15px;
-            border-top: 1px solid #eee;
-            padding-top: 10px;
-        }
-
-        /* تنسيق التذييل (أسفل الصفحة) */
-        footer {
-            background-color: #2c3e50;
-            color: #ecf0f1;
-            padding: 30px 20px;
-            text-align: center;
-            margin-top: 50px;
-        }
-
-        .footer-content {
-            max-width: 900px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .footer-info {
-            flex: 1;
-            text-align: right;
-        }
-
-        .footer-links {
-            flex: 1;
-            text-align: left;
-        }
-
-        .footer-links a {
-            color: #ecf0f1;
-            text-decoration: none;
-            margin: 0 10px;
-            font-size: 15px;
-        }
-
-        .footer-links a:hover {
-            text-decoration: underline;
-        }
-
-        .social-links {
-            margin-top: 10px;
-        }
-
-        .social-links a {
-            font-size: 18px;
-            color: #ecf0f1;
-            margin: 0 5px;
-        }
-
-        .copyright {
-            margin-top: 20px;
-            font-size: 14px;
-            color: #bdc3c7;
-        }
-
-      /* 📱 تحسينات متقدمة للهواتف المحمولة والشاشات الصغيرة */
-        @media (max-width: 768px) {
-            /* 1. ترتيب الترويسة والشعار بشكل عمودي متناسق */
-            header {
-                flex-direction: column-reverse;
-                text-align: center;
-                padding: 15px;
-            }
-            .logo-container {
-                margin: 0 auto 15px auto;
-            }
-            .header-content {
-                text-align: center;
-            }
-            header h1 {
-                font-size: 26px; /* تصغير العنوان قليلاً ليناسب الشاشة */
-            }
-            header p {
-                font-size: 14px;
-            }
-            
-           /* 2. جعل أزرار التنقل أفقية (Horizontal) للهواتف */
-            nav {
-                display: flex;
-                flex-direction: row; /* العرض بشكل أفقي */
-                justify-content: center; /* توسيط الأزرار في المنتصف */
-                flex-wrap: wrap; /* يسمح بنزول الزر لسطر جديد إذا كانت شاشة الهاتف صغيرة جداً */
-                padding: 10px 5px;
-            }
-            nav a {
-                margin: 5px 3px; /* تقليل المسافة بين الأزرار */
-                padding: 8px 10px;
-                font-size: 14px; /* تصغير الخط قليلاً ليتسع الشريط */
-                background-color: rgba(255, 255, 255, 0.1); /* خلفية شفافة أنيقة */
-                border-radius: 5px;
-            }
-
-            /* 3. تعديل المسافات في المحتوى لعدم إهدار المساحة */
-            main {
-                margin: 20px auto;
-            }
-            .hero-section, .event-card, .event-item {
-                padding: 20px; /* تقليل الهوامش الداخلية */
-            }
-            .event-card h3, .event-item h3 {
-                font-size: 20px;
-            }
-        }
-
-/* 🌟 تأثيرات الحركة (Animations) السحرية 🌟 */
+        /* تنسيقات الصفحة الرئيسية */
+        main { flex: 1; max-width: 900px; margin: 40px auto; padding: 0 20px; width: 100%; box-sizing: border-box; }
         
-        /* 1. تعريف الحركة: من الشفافية والأسفل -> إلى الظهور والمكان الطبيعي */
+        /* الحركات (Animations) */
         @keyframes fadeInUp {
-            0% {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            0% { opacity: 0; transform: translateY(40px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
-
-        /* 2. تطبيق الحركة على المربعات الرئيسية في كل الصفحات */
-        .container, .event-item, .contact-wrapper {
+        .hero-section {
+            background: white; padding: 40px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); text-align: center; border-top: 5px solid #2c3e50;
             animation: fadeInUp 0.8s ease-out forwards;
-            opacity: 0; /* نخفيها في البداية لتظهر مع الحركة */
         }
+        .hero-section h2 { color: #d35400; font-size: 28px; margin-bottom: 20px; }
+        .hero-section p { font-size: 18px; line-height: 1.8; color: #555; }
+        .poetry-line { font-size: 24px; font-weight: bold; color: #2c3e50; margin: 30px 0; background-color: #f9f9f9; padding: 20px; border-radius: 8px; border-right: 4px solid #f1c40f; }
+        
+        .highlight-box {
+            background-color: #fffaf7; border: 1px dashed #d35400; padding: 20px; margin-top: 30px; border-radius: 8px; text-align: right;
+            animation: fadeInUp 0.8s ease-out 0.3s forwards; opacity: 0;
+        }
+        .highlight-box h3 { color: #d35400; margin-top: 0; }
+        .highlight-box p { margin-bottom: 0; }
+        
+        footer { background-color: #2c3e50; color: #ecf0f1; padding: 20px; text-align: center; margin-top: auto; }
 
-        /* 3. خدعة التتابع: جعل الفعاليات تظهر واحدة تلو الأخرى */
-        .event-item:nth-child(1) { animation-delay: 0.1s; }
-        .event-item:nth-child(2) { animation-delay: 0.3s; }
-        .event-item:nth-child(3) { animation-delay: 0.5s; }
+        /* تجاوب الشاشات الصغيرة */
+        @media (max-width: 768px) {
+            header { flex-direction: column-reverse; text-align: center; padding: 15px; }
+            .logo-container { margin: 0 auto 15px auto; }
+            .header-content { text-align: center; }
+            header h1 { font-size: 26px; }
+            header p { font-size: 14px; }
+            nav a { font-size: 14px; margin: 5px 3px; padding: 8px 10px; }
+        }
     </style>
 </head>
 <body>
+    
+    <header>
+        <div class="header-content">
+            <h1>منتدى النص والقارئ</h1>
+            <p>مساحتكم الثقافية للإبداع والمناقشة وتشارك الشغف</p>
+        </div>
+        <div class="logo-container">
+            <img src="logo.jpg" alt="شعار المنتدى" class="logo">
+        </div>
+    </header>
 
-    <div class="header-nav-container">
-        <header>
-            <div class="header-content">
-                <h1>منتدى النص والقارئ</h1>
-                <p>مساحتكم الثقافية للإبداع والمناقشة وتشارك الشغف</p>
-            </div>
-            <div class="logo-container">
-                <img src="logo.jpg" alt="شعار منتدى النص والقارئ" class="logo">
-            </div>
-        </header>
-
-        <nav>
-            <a href="index.html" class="active">الرئيسية</a>
-            <a href="events.html">الأنشطة والفعاليات</a>
-            <a href="contact.html">تواصل معنا</a>
-        </nav>
-    </div>
+    <nav>
+        <a href="index.html" class="active">الرئيسية</a>
+        <a href="events.html">الأنشطة والفعاليات</a>
+        <a href="contact.html">تواصل معنا</a>
+    </nav>
 
     <main>
-        <section class="hero-section">
+        <div class="hero-section">
             <h2>أهلاً بكم في عالمنا</h2>
-            <p>نسعى في منتدانا لبناء مجتمع واعٍ يجمع محبي القراءة والأدب، لنغوص معاً في أعماق النصوص، ونتبادل الأفكار والرؤى النقدية في بيئة ثقافية تفاعلية. نحن نؤمن بقوة الكلمة وتأثيرها في بناء الإنسان ورقي المجتمع.</p>
-        </section>
-
-        <div class="event-card">
-            <h3>📢 الفعالية القادمة: موعد أعمى مع كتاب</h3>
-            <div class="event-info">
-                <p>انضموا إلينا في لقائنا القادم المليء بالمفاجآت الثقافية! سيتخلل اللقاء نشاط <strong>"موعد أعمى مع كتاب"</strong>، حيث سنتبادل الكتب المغلفة التي تحمل تلميحات بسيطة عن محتواها، بالإضافة إلى جلسة حوارية مخصصة لمناقشة رواية <strong>"رجال في الشمس"</strong> للأديب غسان كنفاني.</p>
-                <p>📍 <strong>المكان:</strong> جامعة الموصل، كلية التربية، قسم اللغة العربية</p>
-            </div>
-            <div class="event-meta">
-                <span>تاريخ الفعالية: سنوافيكم بالتفاصيل قريباً</span>
+            <p>
+                نسعى في منتدانا لبناء مجتمع واعٍ يجمع محبي القراءة والأدب، لنغوص معاً في أعماق النصوص، 
+                ونتبادل الأفكار والرؤى النقدية في بيئة ثقافية تفاعلية. نحن نؤمن بقوة الكلمة وتأثيرها في بناء الإنسان ورقي المجتمع.
+            </p>
+            <div class="poetry-line">
+                أعزُّ مَكانٍ في الدُنى سَرجُ سابِحٍ <br>
+                وَخَيرُ جَليسٍ في الزَمانِ كِتابُ
             </div>
         </div>
+
+        <div class="highlight-box">
+            <h3>📢 الفعالية القادمة: موعد أعمى مع كتاب</h3>
+            <p>انضموا إلينا في رحلة استكشافية مشوقة مع الأدب! قريباً في شهر مارس، سنلتقي في كلية التربية لتبادل الكتب المغلفة ومناقشة رائعة غسان كنفاني "رجال في الشمس". <a href="events.html" style="color: #2c3e50; font-weight: bold;">(اكتشف المزيد)</a></p>
+        </div>
+        
+        <div style="height: 600px;"></div> 
     </main>
 
     <footer>
-        <div class="footer-content">
-            <div class="footer-info">
-                <p>&copy; 2026 منتدى النص والقارئ. جميع الحقوق محفوظة.</p>
-            </div>
-            <div class="footer-links">
-                <a href="index.html">الرئيسية</a>
-                <a href="events.html">الأنشطة والفعاليات</a>
-                <a href="contact.html">تواصل معنا</a>
-                <div class="social-links">
-                    <a href="#">فيسبوك</a>
-                    <a href="#">انستقرام</a>
-                    <a href="#">تويتر</a>
-                </div>
-            </div>
-        </div>
+        <p>&copy; 2026 منتدى النص والقارئ. جميع الحقوق محفوظة.</p>
     </footer>
 
 </body>

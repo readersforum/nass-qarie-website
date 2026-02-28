@@ -37,7 +37,12 @@
         header p { margin: 5px 0 0; font-size: 16px; opacity: 0.9; }
         
         .logo-container { width: 80px; height: 80px; margin-right: 20px; }
-        .logo { max-width: 100%; max-height: 100%; object-fit: contain; }
+        .logo {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover; /* يحافظ على جودة الصورة ويمنع تشوهها داخل الدائرة */
+    border-radius: 50%; /* ✨ هذا هو السطر السحري الذي يقص الحواف ويحولها لدائرة */
+}
 
         nav {
             background-color: rgba(211, 84, 0, 0.9);
@@ -204,7 +209,7 @@
                 <p>مساحتكم الثقافية للإبداع والمناقشة وتشارك الشغف</p>
             </div>
             <div class="logo-container">
-                <img src="logo.png" alt="شعار المنتدى" class="logo">
+                <img src="logo.jpg" alt="شعار المنتدى" class="logo">
             </div>
         </header>
 
@@ -228,7 +233,7 @@
                 <ul class="info-list">
                     <li>📍 <strong>المكان:</strong> جامعة الموصل - كلية التربية</li>
                     <li>👥 <strong>فريق الإدارة:</strong> مراد وشيماء</li>
-                    <li>📸 <strong>إنستقرام:</strong> <a href="#" target="https://www.instagram.com/muntada25?igsh=NDBqbGR2OWFwcHp4">صفحة المنتدى الرسمية</a></li>
+                    <li>📸 <strong>إنستقرام:</strong> <a href="https://www.instagram.com/muntada25?igsh=NDBqbGR2OWFwcHp4" target="_blank">صفحة المنتدى الرسمية</a></li>
                     <li>📧 <strong>البريد:</strong> muradalahmed24@gmail.com</li>
                 </ul>
             </div>

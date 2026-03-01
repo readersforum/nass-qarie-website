@@ -7,25 +7,10 @@
     
     <style>
         /* التنسيقات العامة */
-        body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            margin: 0; 
-            background-color: #f4f1ea; 
-            color: #333; 
-            display: flex; 
-            flex-direction: column; 
-            min-height: 100vh; 
-        }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; background-color: #f4f1ea; color: #333; display: flex; flex-direction: column; min-height: 100vh; }
         
-        /* الترويسة (ستختفي عند النزول) */
-        header { 
-            background-color: #2c3e50; 
-            color: white; 
-            padding: 20px 30px; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-        }
+        /* الترويسة */
+        header { background-color: #2c3e50; color: white; padding: 20px 30px; display: flex; justify-content: space-between; align-items: center; }
         .header-content { flex: 1; text-align: right; }
         header h1 { margin: 0; font-size: 32px; font-weight: 700; }
         header p { margin: 5px 0 0; font-size: 16px; opacity: 0.9; }
@@ -34,35 +19,10 @@
         .logo-container { width: 90px; height: 90px; margin-right: 20px; }
         .logo { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
 
-        /* 🌟 شريط التنقل (اللاصق) 🌟 */
-        nav { 
-            position: sticky; 
-            top: 0; 
-            z-index: 1000; 
-            display: flex; 
-            flex-direction: row; 
-            justify-content: center; 
-            flex-wrap: wrap; 
-            padding: 10px 5px; 
-            background-color: rgba(211, 84, 0, 0.98); 
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
-        }
-        nav a { 
-            color: white; 
-            text-decoration: none; 
-            margin: 5px 10px; 
-            padding: 8px 15px; 
-            font-size: 16px; 
-            font-weight: 600; 
-            border-radius: 5px; 
-            transition: all 0.3s ease-in-out; 
-        }
-        nav a:hover, nav a.active { 
-            color: #2c3e50; 
-            background-color: #f1c40f; 
-            transform: translateY(-3px); 
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2); 
-        }
+        /* شريط التنقل (اللاصق) */
+        nav { position: sticky; top: 0; z-index: 1000; display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap; padding: 10px 5px; background-color: rgba(211, 84, 0, 0.98); box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        nav a { color: white; text-decoration: none; margin: 5px 10px; padding: 8px 15px; font-size: 16px; font-weight: 600; border-radius: 5px; transition: all 0.3s ease-in-out; }
+        nav a:hover, nav a.active { color: #2c3e50; background-color: #f1c40f; transform: translateY(-3px); box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
 
         /* تنسيقات الصفحة الرئيسية */
         main { flex: 1; max-width: 900px; margin: 40px auto; padding: 0 20px; width: 100%; box-sizing: border-box; }
@@ -72,24 +32,56 @@
             0% { opacity: 0; transform: translateY(40px); }
             100% { opacity: 1; transform: translateY(0); }
         }
-        .hero-section {
-            background: white; padding: 40px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); text-align: center; border-top: 5px solid #2c3e50;
-            animation: fadeInUp 0.8s ease-out forwards;
-        }
+        .hero-section { background: white; padding: 40px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); text-align: center; border-top: 5px solid #2c3e50; animation: fadeInUp 0.8s ease-out forwards; }
         .hero-section h2 { color: #d35400; font-size: 28px; margin-bottom: 20px; }
         .hero-section p { font-size: 18px; line-height: 1.8; color: #555; }
         .poetry-line { font-size: 24px; font-weight: bold; color: #2c3e50; margin: 30px 0; background-color: #f9f9f9; padding: 20px; border-radius: 8px; border-right: 4px solid #f1c40f; }
         
-        .highlight-box {
-            background-color: #fffaf7; border: 1px dashed #d35400; padding: 20px; margin-top: 30px; border-radius: 8px; text-align: right;
-            animation: fadeInUp 0.8s ease-out 0.3s forwards; opacity: 0;
-        }
+        .highlight-box { background-color: #fffaf7; border: 1px dashed #d35400; padding: 20px; margin-top: 30px; border-radius: 8px; text-align: right; animation: fadeInUp 0.8s ease-out 0.3s forwards; opacity: 0; }
         .highlight-box h3 { color: #d35400; margin-top: 0; }
         .highlight-box p { margin-bottom: 0; }
         
+        /* 📚 تنسيقات قسم مكتبة المنتدى 📚 */
+        .library-section { margin-top: 50px; text-align: center; animation: fadeInUp 0.8s ease-out forwards; opacity: 0; animation-delay: 0.5s; }
+        .section-title { color: #2c3e50; border-bottom: 2px solid #d35400; display: inline-block; padding-bottom: 10px; margin-bottom: 30px; font-size: 26px; }
+        
+        /* 💻 ترتيب الكتب على الحاسوب (الوضع الافتراضي) 💻 */
+        .books-grid { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; }
+        
+        .book-card { 
+            background: white; 
+            border-radius: 8px; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+            width: 220px; /* عرض ثابت للحاسوب */
+            flex: 0 0 auto; /* 🌟 هذا السطر يمنع انضغاط البطاقة تماماً 🌟 */
+            overflow: hidden; 
+            transition: transform 0.3s, box-shadow 0.3s; 
+            border-top: 4px solid #f1c40f; 
+            display: flex;
+            flex-direction: column;
+        }
+        .book-card:hover { transform: translateY(-8px); box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
+        
+        .book-cover { height: 260px; display: flex; justify-content: center; align-items: center; font-size: 60px; color: white; width: 100%; object-fit: cover; }
+        
+        /* الألوان المتدرجة للأغلفة */
+        .cover-1 { background: linear-gradient(135deg, #34495e, #2c3e50); }
+        .cover-2 { background: linear-gradient(135deg, #e67e22, #d35400); }
+        .cover-3 { background: linear-gradient(135deg, #95a5a6, #7f8c8d); }
+        .cover-4 { background: linear-gradient(135deg, #27ae60, #2ecc71); }
+        .cover-5 { background: linear-gradient(135deg, #8e44ad, #9b59b6); }
+        .cover-6 { background: linear-gradient(135deg, #c0392b, #e74c3c); }
+        .cover-7 { background: linear-gradient(135deg, #f39c12, #f1c40f); }
+        .cover-8 { background: linear-gradient(135deg, #16a085, #1abc9c); }
+        
+        .book-info { padding: 15px; text-align: right; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
+        .book-info h4 { margin: 0 0 5px; color: #2c3e50; font-size: 18px; font-weight: bold; }
+        .author { margin: 0 0 15px; color: #777; font-size: 14px; }
+        .read-date { display: inline-block; background-color: #eee; color: #555; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; align-self: flex-start; }
+        
         footer { background-color: #2c3e50; color: #ecf0f1; padding: 20px; text-align: center; margin-top: auto; }
 
-        /* تجاوب الشاشات الصغيرة */
+        /* 📱 تجاوب الشاشات الصغيرة (الهواتف) 📱 */
         @media (max-width: 768px) {
             header { flex-direction: column-reverse; text-align: center; padding: 15px; }
             .logo-container { margin: 0 auto 15px auto; }
@@ -97,6 +89,23 @@
             header h1 { font-size: 26px; }
             header p { font-size: 14px; }
             nav a { font-size: 14px; margin: 5px 3px; padding: 8px 10px; }
+            
+            /* تفعيل نظام Grid للهاتف لعرض كتابين */
+            .books-grid { 
+                display: grid; 
+                grid-template-columns: repeat(2, 1fr); 
+                gap: 12px; 
+                padding: 0 10px; 
+            }
+            .book-card { 
+                width: 100%; 
+                flex: none; /* إلغاء خاصية الحاسوب ليعمل الجريد بحرية */
+            }
+            .book-cover { height: 160px; font-size: 35px; }
+            .book-info { padding: 10px; }
+            .book-info h4 { font-size: 14px; margin-bottom: 5px; } 
+            .author { font-size: 12px; margin-bottom: 8px; }
+            .read-date { font-size: 10px; padding: 4px 8px; }
         }
     </style>
 </head>
@@ -136,7 +145,130 @@
             <p>انضموا إلينا في رحلة استكشافية مشوقة مع الأدب! قريباً في شهر مارس، سنلتقي في كلية التربية لتبادل الكتب المغلفة ومناقشة رائعة غسان كنفاني "رجال في الشمس". <a href="events.html" style="color: #2c3e50; font-weight: bold;">(اكتشف المزيد)</a></p>
         </div>
         
-        <div style="height: 600px;"></div> 
+       <div class="library-section">
+            <h2 class="section-title">مكتبة المنتدى (ماذا قرأنا؟)</h2>
+            <div class="books-grid">
+
+                <div class="book-card">
+                    <img src="read.jpg" alt="غلاف العلاج بالقراءة" class="book-cover">
+                    <div class="book-info">
+                        <h4>العلاج بالقراءة</h4>
+                        <p class="author">حسن آل حمادة</p>
+                        <span class="read-date">✅ تمت مناقشته</span>
+                    </div>
+                </div>
+
+                <div class="book-card">
+                    <img src="mms.jpg" alt="غلاف أسرار عقل المليونير" class="book-cover">
+                    <div class="book-info">
+                        <h4>أسرار عقل المليونير</h4>
+                        <p class="author">تي. هارف إيكر</p>
+                        <span class="read-date">✅ تمت مناقشته</span>
+                    </div>
+                </div>
+
+                <div class="book-card">
+                    <img src="susp.jpg" alt="غلاف قوة عقلك الباطن" class="book-cover">
+                    <div class="book-info">
+                        <h4>قوة عقلك الباطن</h4>
+                        <p class="author">جوزيف ميرفي</p>
+                        <span class="read-date">✅ تمت مناقشته</span>
+                    </div>
+                </div>
+
+                <div class="book-card">
+                    <img src="cheese.jpg" alt="غلاف من الذي حرك قطعة الجبن؟" class="book-cover">
+                    <div class="book-info">
+                        <h4>من الذي حرك قطعة الجبن؟</h4>
+                        <p class="author">سبنسر جونسون</p>
+                        <span class="read-date">✅ تمت مناقشته</span>
+                    </div>
+                </div>
+
+                <div class="book-card">
+                    <img src="pos.jpg" alt="غلاف قوة الفعل القليل" class="book-cover">
+                    <div class="book-info">
+                        <h4>قوة الفعل القليل</h4>
+                        <p class="author">تطوير وعادات</p>
+                        <span class="read-date">✅ تمت مناقشته</span>
+                    </div>
+                </div>
+
+                <div class="book-card">
+                    <img src="ei.jpg" alt="غلاف ذكاء المشاعر" class="book-cover">
+                    <div class="book-info">
+                        <h4>ذكاء المشاعر</h4>
+                        <p class="author">دانيال جولمان</p>
+                        <span class="read-date">✅ تمت مناقشته</span>
+                    </div>
+                </div>
+
+                <div class="book-card">
+                    <img src="tob.jpg" alt="غلاف التفكير خارج الصندوق" class="book-cover">
+                    <div class="book-info">
+                        <h4>التفكير خارج الصندوق</h4>
+                        <p class="author">إبداع وابتكار</p>
+                        <span class="read-date">✅ تمت مناقشته</span>
+                    </div>
+                </div>
+
+                <div class="book-card">
+                    <img src="cp.jpg" alt="غلاف مشكلة الثقافة" class="book-cover">
+                    <div class="book-info">
+                        <h4>مشكلة الثقافة</h4>
+                        <p class="author">مالك بن نبي</p>
+                        <span class="read-date">✅ تمت مناقشته</span>
+                    </div>
+                </div>
+
+                <div class="book-card">
+                    <img src="ah.jpg" alt="غلاف العادات الذرية" class="book-cover">
+                    <div class="book-info">
+                        <h4>العادات الذرية</h4>
+                        <p class="author">جيمس كلير</p>
+                        <span class="read-date">✅ تمت مناقشته</span>
+                    </div>
+                </div>
+
+                <div class="book-card">
+                    <img src="poh.jpg" alt="غلاف قوة العادات" class="book-cover">
+                    <div class="book-info">
+                        <h4>قوة العادات</h4>
+                        <p class="author">تشارلز دويج</p>
+                        <span class="read-date">✅ تمت مناقشته</span>
+                    </div>
+                </div>
+
+                <div class="book-card">
+                    <img src="chem.jpg" alt="غلاف الخيميائي" class="book-cover">
+                    <div class="book-info">
+                        <h4>الخيميائي</h4>
+                        <p class="author">باولو كويلو</p>
+                        <span class="read-date">✅ تمت مناقشته</span>
+                    </div>
+                </div>
+
+                <div class="book-card">
+                    <img src="wn.jpg" alt="غلاف الليالي البيظاء" class="book-cover">
+                    <div class="book-info">
+                        <h4>الليالي البيضاء</h4>
+                        <p class="author">فيودور دوستويفسكي</p>
+                        <span class="read-date">✅ تمت مناقشته</span>
+                    </div>
+                </div>
+
+                <div class="book-card" style="border-top: 4px solid #d35400;">
+                    <img src="mas.jpg" alt="غلاف رجال في الشمس " class="book-cover">
+                    <div class="book-info">
+                        <h4>رجال في الشمس</h4>
+                        <p class="author">غسان كنفاني</p>
+                        <span class="read-date" style="background-color: #fdebd0; color: #d35400;">⏳ نقرأه هذا الشهر</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <br><br><br>
     </main>
 
     <footer>

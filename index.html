@@ -107,6 +107,57 @@
             .author { font-size: 12px; margin-bottom: 8px; }
             .read-date { font-size: 10px; padding: 4px 8px; }
         }
+
+/* 🌟 تنسيقات النافذة المنبثقة لتفاصيل الكتاب (Modal) 🌟 */
+        .modal { 
+            display: none; /* مخفية افتراضياً */
+            position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; 
+            background-color: rgba(0,0,0,0.7); backdrop-filter: blur(5px); 
+        }
+        .modal-content { 
+            background-color: #fefefe; margin: 10% auto; padding: 30px; border-radius: 12px; 
+            width: 80%; max-width: 700px; position: relative; 
+            animation: fadeInUp 0.4s ease-out; direction: rtl; box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
+        .close-btn { 
+            color: #aaa; float: left; font-size: 35px; font-weight: bold; cursor: pointer; transition: 0.3s; line-height: 1; 
+        }
+        .close-btn:hover { color: #d35400; }
+        
+        .modal-body { display: flex; gap: 25px; align-items: flex-start; margin-top: 15px; }
+        .modal-body img { width: 220px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); object-fit: cover; }
+        .modal-info { flex: 1; text-align: right; }
+        .modal-info h3 { color: #2c3e50; font-size: 26px; margin-top: 0; margin-bottom: 5px; }
+        .modal-author { color: #777; font-size: 18px; margin-bottom: 15px; font-weight: bold; }
+        
+        .modal-desc { margin-top: 25px; background: #fffaf7; padding: 20px; border-radius: 8px; border-right: 4px solid #d35400; line-height: 1.8; color: #444; }
+        .modal-desc h4 { color: #d35400; margin-top: 0; margin-bottom: 10px; font-size: 18px; }
+/* 📥 تنسيق زر تحميل الـ PDF 📥 */
+        .download-btn {
+            display: inline-block;
+            margin-top: 20px;
+            background-color: #2c3e50;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        .download-btn:hover {
+            background-color: #d35400;
+            transform: translateY(-2px);
+        }
+        /* تجاوب النافذة مع الهواتف */
+        @media (max-width: 768px) {
+            .modal-content { margin: 20% auto; width: 90%; padding: 20px; }
+            .modal-body { flex-direction: column; align-items: center; text-align: center; }
+            .modal-info { text-align: center; }
+            .modal-body img { width: 160px; }
+            .modal-desc { text-align: right; } /* إبقاء النص مقروءاً لليمين */
+        }
+        /* إضافة تفاعل للبطاقات عند تمرير الماوس */
+        .book-card { cursor: pointer; }
     </style>
 </head>
 <body>
@@ -149,8 +200,13 @@
             <h2 class="section-title">مكتبة المنتدى (ماذا قرأنا؟)</h2>
             <div class="books-grid">
 
-                <div class="book-card">
-                    <img src="read.jpg" alt="غلاف العلاج بالقراءة" class="book-cover">
+                <div class="book-card" onclick="openBookModal(this)" 
+                     data-title="العلاج بالقراءة" 
+                     data-author="حسن آل حمادة" 
+                     data-status="✅ تمت مناقشته" 
+                     data-cover="read.jpg" 
+                     data-pdf="https://drive.google.com/file/d/1TPsS63uPnIiIgDE5TaNGafzfNM4ggksi/view?usp=sharing"  data-description="كتاب رائع يناقش كيف يمكن للكتب والقراءة أن تكون علاجاً نفسياً وروحياً للإنسان، وكيف نختار الكتب التي تعيننا على تجاوز أزماتنا وتطوير ذواتنا. كانت مناقشة هذا الكتاب ثرية جداً في المنتدى.">
+                    <img src="read.jpg" alt="غلاف العلاج بالقراءة" class="book-cover-img" style="object-fit: cover; height: 260px; width: 100%;">
                     <div class="book-info">
                         <h4>العلاج بالقراءة</h4>
                         <p class="author">حسن آل حمادة</p>
@@ -158,8 +214,13 @@
                     </div>
                 </div>
 
-                <div class="book-card">
-                    <img src="mms.jpg" alt="غلاف أسرار عقل المليونير" class="book-cover">
+                <div class="book-card" onclick="openBookModal(this)" 
+                     data-title="أسرار عقل المليونير" 
+                     data-author="تي. هارف إيكر" 
+                     data-status="✅ تمت مناقشته" 
+                     data-cover="mms.jpg" 
+               data-pdf="https://drive.google.com/file/d/17xwGT1jRmSEeoX-P4o5LZSx1DhwaPsG3/view?usp=sharing"      data-description="يطرح الكتاب فكرة أن لكل شخص 'مخططاً مالياً' في عقله الباطن يحدد مستوى نجاحه المالي. تعلمنا من خلاله كيف نغير معتقداتنا تجاه المال لنحقق الاستقلال المالي.">
+                    <img src="mms.jpg" alt="غلاف أسرار عقل المليونير" class="book-cover-img" style="object-fit: cover; height: 260px; width: 100%;">
                     <div class="book-info">
                         <h4>أسرار عقل المليونير</h4>
                         <p class="author">تي. هارف إيكر</p>
@@ -167,8 +228,13 @@
                     </div>
                 </div>
 
-                <div class="book-card">
-                    <img src="susp.jpg" alt="غلاف قوة عقلك الباطن" class="book-cover">
+                <div class="book-card" onclick="openBookModal(this)" 
+                     data-title="قوة عقلك الباطن" 
+                     data-author="جوزيف ميرفي" 
+                     data-status="✅ تمت مناقشته" 
+                     data-cover="susp.jpg" 
+                data-pdf="https://drive.google.com/file/d/1BXBy6BC9awvKTiB-pfY2kFOuCAhQlfqY/view?usp=sharing"     data-description="دليل رائع يوضح كيف يمكن لأفكارنا العميقة في العقل الباطن أن تشكل واقعنا. ناقشنا فيه تقنيات التفكير الإيجابي وكيفية التخلص من المخاوف والقيود الذهنية.">
+                    <img src="susp.jpg" alt="غلاف قوة عقلك الباطن" class="book-cover-img" style="object-fit: cover; height: 260px; width: 100%;">
                     <div class="book-info">
                         <h4>قوة عقلك الباطن</h4>
                         <p class="author">جوزيف ميرفي</p>
@@ -176,8 +242,13 @@
                     </div>
                 </div>
 
-                <div class="book-card">
-                    <img src="cheese.jpg" alt="غلاف من الذي حرك قطعة الجبن؟" class="book-cover">
+                <div class="book-card" onclick="openBookModal(this)" 
+                     data-title="من الذي حرك قطعة الجبن؟" 
+                     data-author="سبنسر جونسون" 
+                     data-status="✅ تمت مناقشته" 
+                     data-cover="cheese.jpg" 
+                data-pdf="https://drive.google.com/file/d/1QM22XFK5_szF_WzZ20Jk12w9UY8MJM_m/view?usp=sharing"     data-description="قصة رمزية خفيفة وعميقة في نفس الوقت عن كيفية التعامل مع التغيير في حياتنا وعملنا. كانت مناقشة ممتعة حول المرونة وتقبل التغيير المفاجئ.">
+                    <img src="cheese.jpg" alt="غلاف من الذي حرك قطعة الجبن" class="book-cover-img" style="object-fit: cover; height: 260px; width: 100%;">
                     <div class="book-info">
                         <h4>من الذي حرك قطعة الجبن؟</h4>
                         <p class="author">سبنسر جونسون</p>
@@ -185,17 +256,27 @@
                     </div>
                 </div>
 
-                <div class="book-card">
-                    <img src="pos.jpg" alt="غلاف قوة الفعل القليل" class="book-cover">
+                <div class="book-card" onclick="openBookModal(this)" 
+                     data-title="قوة الفعل القليل" 
+                     data-author="فيرجوس أوكونيل" 
+                     data-status="✅ تمت مناقشته" 
+                     data-cover="pos.jpg" 
+                data-pdf="https://drive.google.com/file/d/1woxEuoDt-nTK-VyM-RjeijYGs6JaTA-A/view?usp=sharing"     data-description="يناقش كيف أن الخطوات الصغيرة والمستمرة أفضل بكثير من الاندفاع المؤقت. كتاب عملي جداً لبناء العادات وتجاوز التسويف بخطوات بسيطة.">
+                    <img src="pos.jpg" alt="غلاف قوة الفعل القليل" class="book-cover-img" style="object-fit: cover; height: 260px; width: 100%;">
                     <div class="book-info">
                         <h4>قوة الفعل القليل</h4>
-                        <p class="author">تطوير وعادات</p>
+                        <p class="author">فيرجوس أوكونيل</p>
                         <span class="read-date">✅ تمت مناقشته</span>
                     </div>
                 </div>
 
-                <div class="book-card">
-                    <img src="ei.jpg" alt="غلاف ذكاء المشاعر" class="book-cover">
+                <div class="book-card" onclick="openBookModal(this)" 
+                     data-title="ذكاء المشاعر" 
+                     data-author="دانيال جولمان" 
+                     data-status="✅ تمت مناقشته" 
+                     data-cover="ei.jpg" 
+                 data-pdf="https://drive.google.com/file/d/1kp04aVDZfdSKMFUKJMREXzvUJRo1wVrm/view?usp=sharing"    data-description="كتاب يغير النظرة التقليدية للذكاء، ليثبت أن الذكاء العاطفي والتحكم بالمشاعر هو السر الحقيقي للنجاح في الحياة المهنية والشخصية.">
+                    <img src="ei.jpg" alt="غلاف ذكاء المشاعر" class="book-cover-img" style="object-fit: cover; height: 260px; width: 100%;">
                     <div class="book-info">
                         <h4>ذكاء المشاعر</h4>
                         <p class="author">دانيال جولمان</p>
@@ -203,17 +284,27 @@
                     </div>
                 </div>
 
-                <div class="book-card">
-                    <img src="tob.jpg" alt="غلاف التفكير خارج الصندوق" class="book-cover">
+                <div class="book-card" onclick="openBookModal(this)" 
+                     data-title="التفكير خارج الصندوق" 
+                     data-author="ديان ديكون" 
+                     data-status="✅ تمت مناقشته" 
+                     data-cover="tob.jpg" 
+                data-pdf="https://drive.google.com/file/d/1On8GDJU2iM46ypXGLgZcTOEgXUxHN5dd/view?usp=sharing"     data-description="رحلة في عوالم الإبداع وكيفية كسر الأنماط التقليدية في التفكير. ناقشنا فيه طرق توليد الأفكار الجديدة وحل المشكلات بطرق غير معتادة.">
+                    <img src="tob.jpg" alt="غلاف التفكير خارج الصندوق" class="book-cover-img" style="object-fit: cover; height: 260px; width: 100%;">
                     <div class="book-info">
                         <h4>التفكير خارج الصندوق</h4>
-                        <p class="author">إبداع وابتكار</p>
+                        <p class="author">ديان ديكون</p>
                         <span class="read-date">✅ تمت مناقشته</span>
                     </div>
                 </div>
 
-                <div class="book-card">
-                    <img src="cp.jpg" alt="غلاف مشكلة الثقافة" class="book-cover">
+                <div class="book-card" onclick="openBookModal(this)" 
+                     data-title="مشكلة الثقافة" 
+                     data-author="مالك بن نبي" 
+                     data-status="✅ تمت مناقشته" 
+                     data-cover="cp.jpg" 
+                data-pdf="https://drive.google.com/file/d/1EYR91_7jknjRBDsF-0onipfaSXxK9f4Z/view?usp=sharing"     data-description="من أهم الكتب الفكرية التي شخصت واقع النهضة والتخلف. طرحنا في المنتدى رؤية مالك بن نبي العميقة حول بناء الحضارة وعناصر الثقافة الفعالة.">
+                    <img src="cp.jpg" alt="غلاف مشكلة الثقافة" class="book-cover-img" style="object-fit: cover; height: 260px; width: 100%;">
                     <div class="book-info">
                         <h4>مشكلة الثقافة</h4>
                         <p class="author">مالك بن نبي</p>
@@ -221,8 +312,13 @@
                     </div>
                 </div>
 
-                <div class="book-card">
-                    <img src="ah.jpg" alt="غلاف العادات الذرية" class="book-cover">
+                <div class="book-card" onclick="openBookModal(this)" 
+                     data-title="العادات الذرية" 
+                     data-author="جيمس كلير" 
+                     data-status="✅ تمت مناقشته" 
+                     data-cover="ah.jpg" 
+                 data-pdf="https://drive.google.com/file/d/1bIdEOtVbxbs483s1EFxaWUFFTQ40-jsK/view?usp=sharing"    data-description="دليل عملي لا غنى عنه لبناء عادات جيدة والتخلص من العادات السيئة، بناءً على فكرة التغييرات الدقيقة التي تتراكم لتصنع نتائج مذهلة.">
+                    <img src="ah.jpg" alt="غلاف العادات الذرية" class="book-cover-img" style="object-fit: cover; height: 260px; width: 100%;">
                     <div class="book-info">
                         <h4>العادات الذرية</h4>
                         <p class="author">جيمس كلير</p>
@@ -230,8 +326,13 @@
                     </div>
                 </div>
 
-                <div class="book-card">
-                    <img src="poh.jpg" alt="غلاف قوة العادات" class="book-cover">
+                <div class="book-card" onclick="openBookModal(this)" 
+                     data-title="قوة العادات" 
+                     data-author="تشارلز دويج" 
+                     data-status="✅ تمت مناقشته" 
+                     data-cover="poh.jpg" 
+                data-pdf="https://drive.google.com/file/d/1HgDTOoo6yc9H8WPGqYG_i7PnTbovtSui/view?usp=sharing"     data-description="يشرح العلم وراء تشكل العادات وكيف يمكن تغييرها. كانت المناقشة ثرية حول 'حلقة العادة' وكيف نبرمج أنفسنا للنجاح.">
+                    <img src="poh.jpg" alt="غلاف قوة العادات" class="book-cover-img" style="object-fit: cover; height: 260px; width: 100%;">
                     <div class="book-info">
                         <h4>قوة العادات</h4>
                         <p class="author">تشارلز دويج</p>
@@ -239,8 +340,13 @@
                     </div>
                 </div>
 
-                <div class="book-card">
-                    <img src="chem.jpg" alt="غلاف الخيميائي" class="book-cover">
+                <div class="book-card" onclick="openBookModal(this)" 
+                     data-title="الخيميائي" 
+                     data-author="باولو كويلو" 
+                     data-status="✅ تمت مناقشته" 
+                     data-cover="chem.jpg" 
+                data-pdf="https://drive.google.com/file/d/1jUGUCKwRdSz7vz7yghLG4WCE73pabzew/view?usp=sharing"     data-description="رواية ساحرة ومُلهمة عن البحث عن الأسطورة الشخصية والسعي لتحقيق الأحلام. سافرنا مع سانتياغو وتعلمنا كيف نستمع لإشارات الكون.">
+                    <img src="chem.jpg" alt="غلاف الخيميائي" class="book-cover-img" style="object-fit: cover; height: 260px; width: 100%;">
                     <div class="book-info">
                         <h4>الخيميائي</h4>
                         <p class="author">باولو كويلو</p>
@@ -248,8 +354,13 @@
                     </div>
                 </div>
 
-                <div class="book-card">
-                    <img src="wn.jpg" alt="غلاف الليالي البيظاء" class="book-cover">
+                <div class="book-card" onclick="openBookModal(this)" 
+                     data-title="الليالي البيضاء" 
+                     data-author="فيودور دوستويفسكي" 
+                     data-status="✅ تمت مناقشته" 
+                     data-cover="wn.jpg" 
+                data-pdf="https://drive.google.com/file/d/1w0kK76un9Uqfar5_Jf0bsZibt0CDDlf_/view?usp=sharing"     data-description="رواية رومانسية حالمة تغوص في أعماق النفس البشرية والوحدة. استمتعنا في المنتدى بتحليل شخصياتها المعقدة ومشاعرها الرقيقة في شوارع سانت بطرسبرغ.">
+                    <img src="wn.jpg" alt="غلاف الليالي البيضاء" class="book-cover-img" style="object-fit: cover; height: 260px; width: 100%;">
                     <div class="book-info">
                         <h4>الليالي البيضاء</h4>
                         <p class="author">فيودور دوستويفسكي</p>
@@ -257,8 +368,13 @@
                     </div>
                 </div>
 
-                <div class="book-card" style="border-top: 4px solid #d35400;">
-                    <img src="mas.jpg" alt="غلاف رجال في الشمس " class="book-cover">
+                <div class="book-card" onclick="openBookModal(this)" 
+                     data-title="رجال في الشمس" 
+                     data-author="غسان كنفاني" 
+                     data-status="⏳ نقرأه هذا الشهر" 
+                     data-cover="mas.jpg" 
+                     data-description="رائعة غسان كنفاني التي تجسد معاناة اللجوء والبحث عن الخلاص. نستعد حالياً لقراءتها ومناقشتها بعمق ضمن فعالية 'موعد أعمى مع كتاب' لشهر مارس.">
+                    <img src="mas.jpg" alt="غلاف رجال في الشمس" class="book-cover-img" style="object-fit: cover; height: 260px; width: 100%;">
                     <div class="book-info">
                         <h4>رجال في الشمس</h4>
                         <p class="author">غسان كنفاني</p>
@@ -274,6 +390,61 @@
     <footer>
         <p>&copy; 2026 منتدى النص والقارئ. جميع الحقوق محفوظة.</p>
     </footer>
+<div id="bookModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeBookModal()">&times;</span>
+            <div class="modal-body">
+                <img id="modalCover" src="" alt="غلاف الكتاب">
+                <div class="modal-info">
+                    <h3 id="modalTitle">عنوان الكتاب</h3>
+                    <p id="modalAuthor" class="modal-author">الكاتب</p>
+                    <span id="modalStatus" class="read-date">الحالة</span>
+                    <div class="modal-desc">
+                        <h4>نبذة عن الكتاب:</h4>
+                        <p id="modalDescription">تفاصيل الكتاب ستظهر هنا...</p>
+                        <a id="modalDownloadBtn" href="#" target="_blank" class="download-btn">تحميل الكتاب (PDF) 📥</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // دالة فتح النافذة
+        function openBookModal(card) {
+            // سحب البيانات
+            document.getElementById('modalTitle').innerText = card.getAttribute('data-title');
+            document.getElementById('modalAuthor').innerText = card.getAttribute('data-author');
+            document.getElementById('modalStatus').innerText = card.getAttribute('data-status');
+            document.getElementById('modalCover').src = card.getAttribute('data-cover');
+            document.getElementById('modalDescription').innerText = card.getAttribute('data-description');
 
+            // ⚙️ برمجة زر التحميل ⚙️
+            const pdfLink = card.getAttribute('data-pdf'); // جلب رابط الـ PDF من البطاقة
+            const downloadBtn = document.getElementById('modalDownloadBtn');
+            
+            if (pdfLink) {
+                downloadBtn.href = pdfLink; // وضع الرابط في الزر
+                downloadBtn.style.display = 'inline-block'; // إظهار الزر
+            } else {
+                downloadBtn.style.display = 'none'; // إخفاء الزر إذا لم يتوفر رابط للكتاب
+            }
+
+            // إظهار النافذة
+            document.getElementById('bookModal').style.display = 'block';
+        }
+
+        // دالة إغلاق النافذة
+        function closeBookModal() {
+            document.getElementById('bookModal').style.display = 'none';
+        }
+
+        // إغلاق النافذة عند الضغط في أي مساحة فارغة خارجها
+        window.onclick = function(event) {
+            const modal = document.getElementById('bookModal');
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
 </body>
 </html>

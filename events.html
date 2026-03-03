@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2Q700NLG3D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-2Q700NLG3D');
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>منتدى النص والقارئ - الأنشطة والفعاليات</title>
@@ -56,6 +65,33 @@
             header h1 { font-size: 26px; }
             header p { font-size: 14px; }
             nav a { font-size: 14px; margin: 5px 3px; padding: 8px 10px; }
+        }
+/* 🌙 تنسيقات الوضع الليلي الموحدة (Dark Mode) 🌙 */
+        .dark-mode-btn { background: none; border: none; font-size: 22px; cursor: pointer; margin: 5px 10px; padding: 5px; transition: transform 0.3s; }
+        .dark-mode-btn:hover { transform: scale(1.1); }
+
+        body.dark-mode { background-color: #2b3035; color: #e9ecef; }
+        body.dark-mode header, body.dark-mode footer { background-color: #212529; border-bottom: 1px solid #495057; }
+        body.dark-mode nav { background-color: rgba(33, 37, 41, 0.98); border-bottom: 1px solid #495057; }
+        
+        /* البطاقات والأقسام ونموذج التواصل */
+        body.dark-mode .event-card, body.dark-mode .contact-section { 
+            background-color: #343a40; border-color: #495057; box-shadow: 0 4px 15px rgba(0,0,0,0.3); 
+        }
+        
+        /* النصوص والتواريخ */
+        body.dark-mode .section-title { color: #f1c40f; border-bottom-color: #f1c40f; }
+        body.dark-mode .event-title, body.dark-mode h3 { color: #f1c40f; }
+        body.dark-mode .event-desc, body.dark-mode p { color: #ced4da; }
+        body.dark-mode .event-date { background-color: #495057; color: #e9ecef; }
+        body.dark-mode .event-location { background-color: #212529; color: #f8f9fa; }
+        
+        /* حقول الإدخال في صفحة التواصل */
+        body.dark-mode input, body.dark-mode textarea { 
+            background-color: #212529; color: #fff; border: 1px solid #6c757d; 
+        }
+        body.dark-mode input:focus, body.dark-mode textarea:focus { 
+            border-color: #f1c40f; outline: none; 
         }
     </style>
 </head>

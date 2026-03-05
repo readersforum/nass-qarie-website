@@ -2,15 +2,15 @@
 <html lang="ar" dir="rtl">
 
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-2Q700NLG3D"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2Q700NLG3D"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-  gtag('config', 'G-2Q700NLG3D');
-</script>
+        gtag('config', 'G-2Q700NLG3D');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>منتدى النص والقارئ</title>
@@ -46,6 +46,18 @@
             margin: 0;
             font-size: 32px;
             font-weight: 700;
+            animation: textGlow 2.5s infinite alternate;
+        }
+
+        /* تأثير توهج النص */
+        @keyframes textGlow {
+            0% {
+                text-shadow: 0 0 5px rgba(241, 196, 15, 0.2), 0 0 10px rgba(241, 196, 15, 0.2);
+            }
+
+            100% {
+                text-shadow: 0 0 10px rgba(241, 196, 15, 0.8), 0 0 20px rgba(241, 196, 15, 0.5), 0 0 30px rgba(241, 196, 15, 0.3);
+            }
         }
 
         header p {
@@ -375,6 +387,43 @@
                 font-size: 10px;
                 padding: 4px 8px;
             }
+
+            /* تفعيل نظام Grid للهاتف لعرض بطاقتين لفريق المنتدى */
+            .team-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+                /* تقليل المسافة بين البطاقات للهاتف */
+                padding: 0 5px;
+            }
+
+            .team-card {
+                width: 100%;
+                flex: none;
+                padding: 15px 5px;
+                /* تقليل الحشوة الداخلية */
+                box-sizing: border-box;
+                /* لضمان عدم خروج البطاقة عن حجم الجريد */
+            }
+
+            .team-avatar {
+                width: 50px;
+                /* تصغير حجم الصورة الدائرية */
+                height: 50px;
+                font-size: 20px;
+                margin-bottom: 8px;
+            }
+
+            .team-name {
+                font-size: 14px;
+                /* تصغير حجم خط الاسم */
+                margin-bottom: 3px;
+            }
+
+            .team-role {
+                font-size: 11px;
+                /* تصغير حجم خط الدور */
+            }
         }
 
         /* 🌟 تنسيقات النافذة المنبثقة لتفاصيل الكتاب (Modal) 🌟 */
@@ -524,7 +573,355 @@
             cursor: pointer;
         }
 
-           </style>
+        /* 👥 تنسيقات قسم فريق المنتدى 👥 */
+        .team-section {
+            margin-top: 60px;
+            text-align: center;
+            margin-bottom: 40px;
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+            animation-delay: 0.7s;
+        }
+
+        .team-grid {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            /* تقليل المسافة لتتسع 4 بطاقات */
+            flex-wrap: wrap;
+            /* السماح بالالتفاف في الشاشات الأصغر قليلاً */
+            margin-top: 20px;
+            max-width: 1000px;
+            /* تحديد عرض أقصى لضمان بقائها معاً */
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .team-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            padding: 25px 15px;
+            /* تقليل الحشوة الداخلية قليلاً */
+            width: 170px;
+            /* تصغير عرض البطاقة لتتسع 4 في صف واحد */
+            text-align: center;
+            transition: 0.3s;
+            border-bottom: 4px solid #d35400;
+            cursor: pointer;
+            box-sizing: border-box;
+            /* لضمان عدم خروجها عن المساحة المحسوبة */
+        }
+
+        .team-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            border-bottom-color: #f1c40f;
+        }
+
+        /* الدائرة التي تحتوي على الحرف الأول من الاسم */
+        .team-avatar {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            font-size: 32px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            border: 3px solid #f1c40f;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .team-name {
+            color: #2c3e50;
+            font-size: 20px;
+            margin: 0 0 5px;
+            font-weight: bold;
+        }
+
+        .team-role {
+            color: #777;
+            font-size: 14px;
+            margin: 0;
+            font-weight: 600;
+        }
+
+        /* 🌟 تنسيقات البحث 🌟 */
+        .search-container {
+            text-align: center;
+            margin-bottom: 30px;
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+            animation-delay: 0.6s;
+        }
+
+        #searchInput {
+            width: 80%;
+            max-width: 500px;
+            padding: 12px 20px;
+            font-size: 16px;
+            border: 2px solid #d35400;
+            border-radius: 25px;
+            outline: none;
+            transition: all 0.3s;
+            font-family: inherit;
+        }
+
+        #searchInput:focus {
+            box-shadow: 0 0 10px rgba(211, 84, 0, 0.4);
+            border-color: #e67e22;
+        }
+
+        /* � تنسيقات اقتباس اليوم 🌟 */
+        .quote-container {
+            text-align: center;
+            margin: 40px auto;
+            max-width: 800px;
+            padding: 0 20px;
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+            animation-delay: 0.2s;
+        }
+
+        .quote-box {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border-right: 5px solid #d35400;
+            position: relative;
+            transition: 0.3s;
+        }
+
+        .quote-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .quote-icon {
+            font-size: 40px;
+            color: #f1c40f;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            opacity: 0.5;
+        }
+
+        .quote-text {
+            font-size: 20px;
+            color: #2c3e50;
+            line-height: 1.6;
+            margin: 10px 0 15px;
+            font-style: italic;
+            font-weight: 500;
+        }
+
+        .quote-author {
+            font-size: 16px;
+            color: #777;
+            font-weight: bold;
+        }
+
+        /* �🌙 تنسيقات الوضع الليلي الموحدة (Dark Mode) 🌙 */
+        .dark-mode-btn {
+            background: none;
+            border: none;
+            font-size: 22px;
+            cursor: pointer;
+            margin: 5px 10px;
+            padding: 5px;
+            transition: transform 0.3s;
+            color: white;
+        }
+
+        .dark-mode-btn:hover {
+            transform: scale(1.1);
+            color: #f1c40f;
+        }
+
+        body.dark-mode {
+            background-color: #2b3035;
+            color: #e9ecef;
+        }
+
+        body.dark-mode header,
+        body.dark-mode footer {
+            background-color: #212529;
+            border-bottom: 1px solid #495057;
+        }
+
+        body.dark-mode nav {
+            background-color: rgba(33, 37, 41, 0.98);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+            border-bottom: 1px solid #495057;
+        }
+
+        body.dark-mode .hero-section,
+        body.dark-mode .highlight-box,
+        body.dark-mode .event-item,
+        body.dark-mode .contact-wrapper {
+            background-color: #343a40;
+            border-color: #495057;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            color: #e9ecef;
+        }
+
+        body.dark-mode .hero-section h2,
+        body.dark-mode .highlight-box h3 {
+            color: #f1c40f;
+        }
+
+        body.dark-mode .hero-section p,
+        body.dark-mode .highlight-box p {
+            color: #ced4da;
+        }
+
+        body.dark-mode .poetry-line {
+            background-color: #212529;
+            color: #f1c40f;
+            border-color: #f1c40f;
+        }
+
+        body.dark-mode .book-card {
+            background-color: #343a40;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            border-top-color: #e67e22;
+            transition: transform 0.3s, box-shadow 0.3s, border-top-color 0.3s;
+        }
+
+        body.dark-mode .book-card:hover {
+            box-shadow: 0 8px 25px rgba(241, 196, 15, 0.15);
+            transform: translateY(-5px);
+            border-top-color: #f1c40f;
+        }
+
+        body.dark-mode .book-info h4 {
+            color: #f1c40f;
+        }
+
+        body.dark-mode .author {
+            color: #adb5bd;
+        }
+
+        body.dark-mode .read-date {
+            background-color: #495057;
+            color: #e9ecef;
+        }
+
+        body.dark-mode .section-title {
+            color: #f1c40f;
+            border-bottom-color: #f1c40f;
+        }
+
+        body.dark-mode .team-card {
+            background-color: #2c3e50;
+            /* لون أزرق داكن للبطاقة بدلاً من الرمادي */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            border-bottom-color: #f1c40f;
+            /* شريط سفلي ذهبي */
+        }
+
+        body.dark-mode .team-card:hover {
+            box-shadow: 0 8px 25px rgba(241, 196, 15, 0.15);
+            /* توهج ذهبي عند التمرير */
+            transform: translateY(-5px);
+            border-bottom-color: #e67e22;
+            /* يتحول السطر السفلي لبرتقالي عند التأشير */
+        }
+
+        body.dark-mode .team-name {
+            color: #f1c40f;
+            /* اسم العضو باللون الذهبي */
+        }
+
+        body.dark-mode .team-role {
+            color: #bdc3c7;
+            /* لون رمادي فاتح للدور الوظيفي الوظيفي ليكون مقروءاً */
+        }
+
+        body.dark-mode .modal-content {
+            background-color: #343a40;
+            color: #e9ecef;
+        }
+
+        body.dark-mode .modal-info h3 {
+            color: #f1c40f;
+        }
+
+        body.dark-mode .modal-author {
+            color: #adb5bd;
+        }
+
+        body.dark-mode .modal-desc {
+            background-color: #212529;
+            color: #ced4da;
+            border-color: #e67e22;
+        }
+
+        body.dark-mode .modal-desc h4 {
+            color: #e67e22;
+        }
+
+        body.dark-mode .quote-box {
+            background-color: #343a40;
+            border-right-color: #f1c40f;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        body.dark-mode .quote-box:hover {
+            box-shadow: 0 8px 25px rgba(241, 196, 15, 0.15);
+        }
+
+        body.dark-mode .quote-text {
+            color: #e9ecef;
+        }
+
+        body.dark-mode .quote-author {
+            color: #adb5bd;
+        }
+
+        /* تنسيقات نافذة الفريق في الوضع الليلي */
+        body.dark-mode #modalTeamName {
+            color: #f1c40f !important;
+        }
+
+        body.dark-mode #modalTeamRole {
+            color: #bdc3c7 !important;
+        }
+
+        body.dark-mode #modalTeamBio {
+            color: #e9ecef !important;
+        }
+
+        body.dark-mode #teamModal .modal-content div[style*="background: #fffaf7"] {
+            background: #2a343d !important;
+            border-right-color: #d35400 !important;
+            color: #e9ecef !important;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        body.dark-mode .close-btn {
+            color: #ced4da;
+        }
+
+        body.dark-mode .close-btn:hover {
+            color: #f1c40f;
+        }
+
+        body.dark-mode #searchInput {
+            background-color: #212529;
+            color: #e9ecef;
+            border-color: #f1c40f;
+        }
+
+        body.dark-mode #searchInput:focus {
+            box-shadow: 0 0 10px rgba(241, 196, 15, 0.4);
+        }
+    </style>
 </head>
 
 <body>
@@ -542,7 +939,9 @@
     <nav>
         <a href="index.html" class="active">الرئيسية</a>
         <a href="events.html">الأنشطة والفعاليات</a>
+        <a href="blog.html">صوت الأعضاء (المدونة)</a>
         <a href="contact.html">تواصل معنا</a>
+        <button id="darkModeBtn" class="dark-mode-btn" onclick="toggleDarkMode()">🌙</button>
     </nav>
 
     <main>
@@ -566,9 +965,23 @@
                     style="color: #2c3e50; font-weight: bold;">(اكتشف المزيد)</a></p>
         </div>
 
+        <div class="quote-container">
+            <div class="quote-box">
+                <div class="quote-icon">❝</div>
+                <div class="quote-text" id="dailyQuoteText">"جاري تحميل اقتباس اليوم..."</div>
+                <div class="quote-author" id="dailyQuoteAuthor">- المنتدى</div>
+            </div>
+        </div>
+
         <div class="library-section">
             <h2 class="section-title">مكتبة المنتدى (ماذا قرأنا؟)</h2>
-            <div class="books-grid">
+
+            <div class="search-container">
+                <input type="text" id="searchInput" oninput="filterBooks()"
+                    placeholder="ابحث عن اسم الكتاب أو الكاتب...">
+            </div>
+
+            <div class="books-grid" id="booksGrid">
 
                 <div class="book-card" onclick="openBookModal(this)" data-title="العلاج بالقراءة"
                     data-author="حسن آل حمادة" data-status="✅ تمت مناقشته" data-cover="read.jpg"
@@ -741,14 +1154,70 @@
 
             </div>
         </div>
+
+        <section class="team-section">
+            <h2 class="section-title">فريق المنتدى ✨</h2>
+            <div class="team-grid">
+
+                <div class="team-card" onclick="openTeamModal(this)" data-name="مُراد الأحمد" data-role="مؤسس المنتدى"
+                    data-avatar="<img src='murad-avatar.png' style='width:100%; height:100%; border-radius:50%; object-fit:cover;'>"
+                    data-bio="طالب في المرحلة الثالثة بكلية التربية (قسم اللغة العربية). مؤسس المنتدى والمطور البرمجي للموقع. يسعى لبناء مجتمع قرائي واعي يجمع بين شغف القراءة وعمق النصوص.">
+                    <div class="team-avatar" style="padding: 0; overflow: hidden;"><img src="murad-avatar.png"
+                            alt="مُراد الأحمد" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                    <h3 class="team-name">مُراد الأحمد</h3>
+                    <p class="team-role">مؤسس المنتدى</p>
+                </div>
+
+                <div class="team-card" onclick="openTeamModal(this)" data-name="خولة" data-role="إدارة المنتدى"
+                    data-avatar="<img src='khawla-avatar.png' style='width:100%; height:100%; border-radius:50%; object-fit:cover;'>"
+                    data-bio="عضو في إدارة المنتدى. طالبة في المرحلة الثالثة بكلية التربية (قسم اللغة العربية). مهتمة بقراءة الكتب وتساهم في تنظيم فعاليات المنتدى.">
+                    <div class="team-avatar" style="padding: 0; overflow: hidden;"><img src="khawla-avatar.png"
+                            alt="خولة" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                    <h3 class="team-name">خولة</h3>
+                    <p class="team-role">إدارة المنتدى</p>
+                </div>
+
+                <div class="team-card" onclick="openTeamModal(this)" data-name="شيماء" data-role="إدارة المنتدى"
+                    data-avatar="<img src='shaimaa-avatar.png' style='width:100%; height:100%; border-radius:50%; object-fit:cover;'>"
+                    data-bio="عضو نشط في إدارة المنتدى. تتميز بإثراء النقاشات وطرح الأفكار الإبداعية لتطوير المنتدى. طالبة في كلية التربية للعلوم الصرفة (قسم الكيمياء). شغوفة بقراءة الكتب وكتابة النصوص الواقعية، ومحبة للشعر والأدب.">
+                    <div class="team-avatar" style="padding: 0; overflow: hidden;"><img src="shaimaa-avatar.png"
+                            alt="شيماء" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                    <h3 class="team-name">شيماء</h3>
+                    <p class="team-role">إدارة المنتدى</p>
+                </div>
+
+                <div class="team-card" onclick="openTeamModal(this)" data-name="مينـه" data-role="إدارة المنتدى"
+                    data-avatar="<img src='mina-avatar.png' style='width:100%; height:100%; border-radius:50%; object-fit:cover;'>"
+                    data-bio="هندسة الأفكار قبل المباني، وشغف البحث عن الحقيقة في متاهات الورق. هنا زاوية تجمع دقة العقل بجموح القلم، حيث كل كتاب هو مشروعٌ جديد لإعادة اكتشاف الذات. لنغرس في هذه القناة بذرة الفكر، ونحصد ثمار الدهشة">
+                    <div class="team-avatar" style="padding: 0; overflow: hidden;"><img src="mina-avatar.png"
+                            alt="مينـه" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                    <h3 class="team-name">مينـه</h3>
+                    <p class="team-role">إدارة المنتدى</p>
+                </div>
+
+            </div>
+        </section>
+
         <br><br><br>
     </main>
-    
-        </div>
-    </section>
+
     <footer>
         <p>&copy; 2026 منتدى النص والقارئ. جميع الحقوق محفوظة.</p>
     </footer>
+    <div id="teamModal" class="modal">
+        <div class="modal-content" style="max-width: 450px; text-align: center;">
+            <span class="close-btn" onclick="closeTeamModal()">&times;</span>
+            <div class="team-avatar" id="modalTeamAvatar"
+                style="width: 100px; height: 100px; font-size: 45px; margin: 0 auto 15px;">م</div>
+            <h3 id="modalTeamName" style="color: #2c3e50; font-size: 26px; margin: 0 0 5px;">الاسم</h3>
+            <p id="modalTeamRole" style="color: #d35400; font-weight: bold; font-size: 16px; margin: 0 0 20px;">الدور
+            </p>
+            <div
+                style="background: #fffaf7; padding: 20px; border-radius: 8px; border-right: 4px solid #f1c40f; line-height: 1.8; color: #444; text-align: right; font-size: 15px;">
+                <p id="modalTeamBio" style="margin: 0;">النبذة عن الشخص ستظهر هنا...</p>
+            </div>
+        </div>
+    </div>
     <div id="bookModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeBookModal()">&times;</span>
@@ -768,43 +1237,130 @@
         </div>
     </div>
     <script>
-        // دالة فتح النافذة
+        // 1. أكواد نافذة الكتب (كما هي لم تتغير)
         function openBookModal(card) {
-            // سحب البيانات
             document.getElementById('modalTitle').innerText = card.getAttribute('data-title');
             document.getElementById('modalAuthor').innerText = card.getAttribute('data-author');
             document.getElementById('modalStatus').innerText = card.getAttribute('data-status');
             document.getElementById('modalCover').src = card.getAttribute('data-cover');
             document.getElementById('modalDescription').innerText = card.getAttribute('data-description');
 
-            // ⚙️ برمجة زر التحميل ⚙️
-            const pdfLink = card.getAttribute('data-pdf'); // جلب رابط الـ PDF من البطاقة
+            const pdfLink = card.getAttribute('data-pdf');
             const downloadBtn = document.getElementById('modalDownloadBtn');
-
             if (pdfLink) {
-                downloadBtn.href = pdfLink; // وضع الرابط في الزر
-                downloadBtn.style.display = 'inline-block'; // إظهار الزر
+                downloadBtn.href = pdfLink;
+                downloadBtn.style.display = 'inline-block';
             } else {
-                downloadBtn.style.display = 'none'; // إخفاء الزر إذا لم يتوفر رابط للكتاب
+                downloadBtn.style.display = 'none';
             }
-
-            // إظهار النافذة
             document.getElementById('bookModal').style.display = 'block';
         }
 
-        // دالة إغلاق النافذة
         function closeBookModal() {
             document.getElementById('bookModal').style.display = 'none';
         }
 
-        // إغلاق النافذة عند الضغط في أي مساحة فارغة خارجها
+        // 2. أكواد نافذة فريق المنتدى (الجديدة)
+        function openTeamModal(card) {
+            document.getElementById('modalTeamName').innerText = card.getAttribute('data-name');
+            document.getElementById('modalTeamRole').innerText = card.getAttribute('data-role');
+            document.getElementById('modalTeamAvatar').innerHTML = card.getAttribute('data-avatar');
+            document.getElementById('modalTeamBio').innerText = card.getAttribute('data-bio');
+
+            document.getElementById('teamModal').style.display = 'block';
+        }
+
+        function closeTeamModal() {
+            document.getElementById('teamModal').style.display = 'none';
+        }
+
+        // 3. إغلاق النوافذ عند الضغط خارجها
         window.onclick = function (event) {
-            const modal = document.getElementById('bookModal');
-            if (event.target == modal) {
-                modal.style.display = "none";
+            const bookModal = document.getElementById('bookModal');
+            const teamModal = document.getElementById('teamModal');
+
+            if (event.target == bookModal) {
+                bookModal.style.display = "none";
+            }
+            if (event.target == teamModal) {
+                teamModal.style.display = "none";
+            }
+        };
+        // التبديل للوضع الليلي
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            const btn = document.getElementById('darkModeBtn');
+            if (document.body.classList.contains('dark-mode')) {
+                btn.innerText = '☀️';
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                btn.innerText = '🌙';
+                localStorage.setItem('darkMode', 'disabled');
             }
         }
+
+        // فلترة الكتب
+        function filterBooks() {
+            let input = document.getElementById('searchInput');
+            let filter = input.value.toLowerCase();
+            let cards = document.getElementsByClassName('book-card');
+
+            for (let i = 0; i < cards.length; i++) {
+                let title = (cards[i].getAttribute('data-title') || "").toLowerCase();
+                let author = (cards[i].getAttribute('data-author') || "").toLowerCase();
+
+                if (title.includes(filter) || author.includes(filter)) {
+                    cards[i].style.display = 'flex';
+                } else {
+                    cards[i].style.display = 'none';
+                }
+            }
+
+            // إرسال مصطلح البحث إلى Google Analytics
+            if (filter.length > 2) {
+                clearTimeout(window.searchTimeout);
+                window.searchTimeout = setTimeout(() => {
+                    gtag('event', 'search', { 'search_term': filter });
+                }, 1500); // الانتظار لثانية ونصف بعد توقف المستخدم عن الكتابة لتجنب إرسال كل حرف
+            }
+        }
+
+        // اقتباسات اليوم
+        const quotes = [
+            { text: "إن قضية الموت ليست على الإطلاق قضية الميت، إنها قضية الباقين.", author: "غسان كنفاني - رجال في الشمس" },
+            { text: "لن تستطيع أن تجد الشمس في غرفة مغلقة.", author: "غسان كنفاني - رجال في الشمس" },
+            { text: "إذا لم تتغير، فمن الممكن أن تفنى.", author: "سبنسر جونسون - من الذي حرك قطعة الجبن؟" },
+            { text: "الخوف من الفشل هو العائق الأكبر أمام النجاح.", author: "سبنسر جونسون - من الذي حرك قطعة الجبن؟" },
+            { text: "عندما ترغب في شيء ما، يتآمر الكون كله لمساعدتك على تحقيقه.", author: "باولو كويلو - الخيميائي" },
+            { text: "هناك طريقة واحدة لتعلم أي شيء؛ وهي العمل.", author: "باولو كويلو - الخيميائي" },
+            { text: "العادات الصغيرة تبدو وكأنها لا تحدث فرقاً كبيراً، حتى تعبر خطاً زمنياً فتكتشف التأثير الهائل.", author: "جيمس كلير - العادات الذرية" },
+            { text: "أنت لا ترتقي إلى مستوى أهدافك، بل تسقط إلى مستوى أنظمتك.", author: "جيمس كلير - العادات الذرية" },
+            { text: "ليس من المهم مقدار ما تجنيه من مال، بل الأهم هو مقدار ما تحتفظ به.", author: "تي. هارف إيكر - أسرار عقل المليونير" },
+            { text: "تفكيرك يصنع واقعك.", author: "جوزيف ميرفي - قوة عقلك الباطن" },
+            { text: "القراءة غذاء الروح، بها نتعافى ونرتقي لنفهم أنفسنا والآخرين بطريقة أفضل.", author: "حسن آل حمادة - العلاج بالقراءة" },
+            { text: "إن الذكاء الأكاديمي لا يقدم أي استعداد لجميع الاضطرابات التي نتعرض لها في الحياة.", author: "دانيال جولمان - ذكاء المشاعر" },
+            { text: "لا يوجد شيء مستحيل إذا فكرت خارج الصندوق وتحديت المألوف.", author: "ديان ديكون - التفكير خارج الصندوق" },
+            { text: "الثقافة هي المحيط الذي يعيش فيه الفرد، ولا يمكن بناء حضارة بدون ثقافة أصيلة ومستقلة.", author: "مالك بن نبي - مشكلة الثقافة" },
+            { text: "أنا حالم.. وحياتي كلها محض حلم مستمر.", author: "فيودور دوستويفسكي - الليالي البيضاء" }
+        ];
+
+        function displayRandomQuote() {
+            const randomIndex = Math.floor(Math.random() * quotes.length);
+            const quote = quotes[randomIndex];
+            document.getElementById('dailyQuoteText').innerText = `"${quote.text}"`;
+            document.getElementById('dailyQuoteAuthor').innerText = `- ${quote.author}`;
+        }
+
+        // تطبيق الوضع الليلي المحفوظ عند تحميل الصفحة واختيار اقتباس
+        window.onload = function () {
+            if (localStorage.getItem('darkMode') === 'enabled') {
+                document.body.classList.add('dark-mode');
+                document.getElementById('darkModeBtn').innerText = '☀️';
+            }
+            displayRandomQuote();
+        };
     </script>
+    <script src="magic.js"></script>
 </body>
 
 </html>

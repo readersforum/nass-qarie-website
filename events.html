@@ -1,100 +1,333 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-<head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-2Q700NLG3D"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-2Q700NLG3D');
-</script>
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2Q700NLG3D"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-2Q700NLG3D');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>منتدى النص والقارئ - الأنشطة والفعاليات</title>
-    
+
     <style>
         /* التنسيقات العامة */
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; background-color: #f4f1ea; color: #333; display: flex; flex-direction: column; min-height: 100vh; }
-        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background-color: #f4f1ea;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
         /* الترويسة (تختفي عند النزول) */
-        header { background-color: #2c3e50; color: white; padding: 20px 30px; display: flex; justify-content: space-between; align-items: center; }
-        .header-content { flex: 1; text-align: right; }
-        header h1 { margin: 0; font-size: 32px; font-weight: 700; }
-        header p { margin: 5px 0 0; font-size: 16px; opacity: 0.9; }
-        
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-content {
+            flex: 1;
+            text-align: right;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 32px;
+            font-weight: 700;
+            animation: textGlow 2.5s infinite alternate;
+        }
+
+        /* تأثير توهج النص */
+        @keyframes textGlow {
+            0% {
+                text-shadow: 0 0 5px rgba(241, 196, 15, 0.2), 0 0 10px rgba(241, 196, 15, 0.2);
+            }
+
+            100% {
+                text-shadow: 0 0 10px rgba(241, 196, 15, 0.8), 0 0 20px rgba(241, 196, 15, 0.5), 0 0 30px rgba(241, 196, 15, 0.3);
+            }
+        }
+
+        header p {
+            margin: 5px 0 0;
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
         /* الشعار الدائري */
-        .logo-container { width: 90px; height: 90px; margin-right: 20px; }
-        .logo { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+        .logo-container {
+            width: 90px;
+            height: 90px;
+            margin-right: 20px;
+        }
+
+        .logo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
 
         /* شريط التنقل (اللاصق) */
-        nav { position: sticky; top: 0; z-index: 1000; display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap; padding: 10px 5px; background-color: rgba(211, 84, 0, 0.98); box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        nav a { color: white; text-decoration: none; margin: 5px 10px; padding: 8px 15px; font-size: 16px; font-weight: 600; border-radius: 5px; transition: all 0.3s ease-in-out; }
-        nav a:hover, nav a.active { color: #2c3e50; background-color: #f1c40f; transform: translateY(-3px); box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 10px 5px;
+            background-color: rgba(211, 84, 0, 0.98);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 5px 10px;
+            padding: 8px 15px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 5px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: #2c3e50;
+            background-color: #f1c40f;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
 
         /* تنسيقات خاصة بصفحة الفعاليات فقط */
-        main { flex: 1; max-width: 900px; margin: 40px auto; padding: 0 20px; width: 100%; box-sizing: border-box; }
-        .page-title { text-align: center; color: #2c3e50; margin-bottom: 40px; border-bottom: 2px solid #d35400; padding-bottom: 10px; display: inline-block; }
-        .event-list { display: flex; flex-direction: column; gap: 30px; }
-        
+        main {
+            flex: 1;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .page-title {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 40px;
+            border-bottom: 2px solid #d35400;
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
+        .event-list {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
         /* الحركات (Animations) */
         @keyframes fadeInUp {
-            0% { opacity: 0; transform: translateY(40px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-        .event-item { background: white; padding: 25px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); border-right: 5px solid #2c3e50; animation: fadeInUp 0.8s ease-out forwards; opacity: 0; }
-        .event-item.upcoming { border-right-color: #d35400; background-color: #fffaf7; }
-        .event-item:nth-child(1) { animation-delay: 0.1s; }
-        .event-item:nth-child(2) { animation-delay: 0.3s; }
-        .event-item:nth-child(3) { animation-delay: 0.5s; }
-        
-        .event-date { display: inline-block; background-color: #eee; padding: 5px 15px; border-radius: 20px; font-size: 14px; color: #555; margin-bottom: 15px; font-weight: bold; }
-        .upcoming .event-date { background-color: #fdebd0; color: #d35400; }
-        .event-item h3 { margin: 0 0 10px; color: #2c3e50; font-size: 22px; }
-        .event-item p { margin: 0 0 15px; line-height: 1.6; color: #555; }
-        .event-location { font-size: 15px; color: #777; font-weight: 600; }
+            0% {
+                opacity: 0;
+                transform: translateY(40px);
+            }
 
-        footer { background-color: #2c3e50; color: #ecf0f1; padding: 20px; text-align: center; margin-top: auto; }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .event-item {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            border-right: 5px solid #2c3e50;
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        .event-item.upcoming {
+            border-right-color: #d35400;
+            background-color: #fffaf7;
+        }
+
+        .event-item:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .event-item:nth-child(2) {
+            animation-delay: 0.3s;
+        }
+
+        .event-item:nth-child(3) {
+            animation-delay: 0.5s;
+        }
+
+        .event-date {
+            display: inline-block;
+            background-color: #eee;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .upcoming .event-date {
+            background-color: #fdebd0;
+            color: #d35400;
+        }
+
+        .event-item h3 {
+            margin: 0 0 10px;
+            color: #2c3e50;
+            font-size: 22px;
+        }
+
+        .event-item p {
+            margin: 0 0 15px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .event-location {
+            font-size: 15px;
+            color: #777;
+            font-weight: 600;
+        }
+
+        footer {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            text-align: center;
+            margin-top: auto;
+        }
 
         /* تجاوب الشاشات الصغيرة */
         @media (max-width: 768px) {
-            header { flex-direction: column-reverse; text-align: center; padding: 15px; }
-            .logo-container { margin: 0 auto 15px auto; }
-            .header-content { text-align: center; }
-            header h1 { font-size: 26px; }
-            header p { font-size: 14px; }
-            nav a { font-size: 14px; margin: 5px 3px; padding: 8px 10px; }
-        }
-/* 🌙 تنسيقات الوضع الليلي الموحدة (Dark Mode) 🌙 */
-        .dark-mode-btn { background: none; border: none; font-size: 22px; cursor: pointer; margin: 5px 10px; padding: 5px; transition: transform 0.3s; }
-        .dark-mode-btn:hover { transform: scale(1.1); }
+            header {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding: 15px;
+            }
 
-        body.dark-mode { background-color: #2b3035; color: #e9ecef; }
-        body.dark-mode header, body.dark-mode footer { background-color: #212529; border-bottom: 1px solid #495057; }
-        body.dark-mode nav { background-color: rgba(33, 37, 41, 0.98); border-bottom: 1px solid #495057; }
-        
-        /* البطاقات والأقسام ونموذج التواصل */
-        body.dark-mode .event-card, body.dark-mode .contact-section { 
-            background-color: #343a40; border-color: #495057; box-shadow: 0 4px 15px rgba(0,0,0,0.3); 
+            .logo-container {
+                margin: 0 auto 15px auto;
+            }
+
+            .header-content {
+                text-align: center;
+            }
+
+            header h1 {
+                font-size: 26px;
+            }
+
+            header p {
+                font-size: 14px;
+            }
+
+            nav a {
+                font-size: 14px;
+                margin: 5px 3px;
+                padding: 8px 10px;
+            }
         }
-        
-        /* النصوص والتواريخ */
-        body.dark-mode .section-title { color: #f1c40f; border-bottom-color: #f1c40f; }
-        body.dark-mode .event-title, body.dark-mode h3 { color: #f1c40f; }
-        body.dark-mode .event-desc, body.dark-mode p { color: #ced4da; }
-        body.dark-mode .event-date { background-color: #495057; color: #e9ecef; }
-        body.dark-mode .event-location { background-color: #212529; color: #f8f9fa; }
-        
-        /* حقول الإدخال في صفحة التواصل */
-        body.dark-mode input, body.dark-mode textarea { 
-            background-color: #212529; color: #fff; border: 1px solid #6c757d; 
+
+        /* 🌙 تنسيقات الوضع الليلي الموحدة (Dark Mode) 🌙 */
+        .dark-mode-btn {
+            background: none;
+            border: none;
+            font-size: 22px;
+            cursor: pointer;
+            margin: 5px 10px;
+            padding: 5px;
+            transition: transform 0.3s;
+            color: white;
         }
-        body.dark-mode input:focus, body.dark-mode textarea:focus { 
-            border-color: #f1c40f; outline: none; 
+
+        .dark-mode-btn:hover {
+            transform: scale(1.1);
+            color: #f1c40f;
+        }
+
+        body.dark-mode {
+            background-color: #2b3035;
+            color: #e9ecef;
+        }
+
+        body.dark-mode header,
+        body.dark-mode footer {
+            background-color: #212529;
+            border-bottom: 1px solid #495057;
+        }
+
+        body.dark-mode nav {
+            background-color: rgba(33, 37, 41, 0.98);
+            border-bottom: 1px solid #495057;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+        }
+
+        body.dark-mode .event-item {
+            background-color: #343a40;
+            border-color: #495057;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            color: #e9ecef;
+            border-right-color: #495057;
+        }
+
+        body.dark-mode .event-item.upcoming {
+            background-color: #3f474e;
+            border-right-color: #f1c40f;
+            border-color: #f1c40f;
+        }
+
+        body.dark-mode .page-title {
+            color: #f1c40f;
+            border-bottom-color: #f1c40f;
+        }
+
+        body.dark-mode h3 {
+            color: #f1c40f;
+        }
+
+        body.dark-mode p {
+            color: #ced4da;
+        }
+
+        body.dark-mode .event-date {
+            background-color: #495057;
+            color: #e9ecef;
+        }
+
+        body.dark-mode .upcoming .event-date {
+            background-color: #d35400;
+            color: #ffffff;
+        }
+
+        body.dark-mode .event-location {
+            color: #adb5bd;
         }
     </style>
 </head>
+
 <body>
     <header>
         <div class="header-content">
@@ -109,7 +342,9 @@
     <nav>
         <a href="index.html">الرئيسية</a>
         <a href="events.html" class="active">الأنشطة والفعاليات</a>
+        <a href="blog.html">صوت الأعضاء (المدونة)</a>
         <a href="contact.html">تواصل معنا</a>
+        <button id="darkModeBtn" class="dark-mode-btn" onclick="toggleDarkMode()">🌙</button>
     </nav>
 
     <main>
@@ -120,27 +355,55 @@
             <div class="event-item upcoming">
                 <span class="event-date">⏳ قريباً - مارس 2026</span>
                 <h3>موعد أعمى مع كتاب</h3>
-                <p>لقاء يجمع بين متعة المفاجأة وعمق النقاش. سيتخلل النشاط تبادل كتب مغلفة مع تلميحات تشويقية، يعقبها جلسة حوارية ثرية لمناقشة رائعة الأديب غسان كنفاني "رجال في الشمس".</p>
-                <div class="event-location">📍 جامعة الموصل - كلية التربية</div>
+                <p>لقاء يجمع بين متعة المفاجأة وعمق النقاش. سيتخلل النشاط تبادل كتب مغلفة مع تلميحات تشويقية، يعقبها
+                    جلسة حوارية ثرية لمناقشة رائعة الأديب غسان كنفاني "رجال في الشمس".</p>
+                <div class="event-location">📍جامعة الموصل </div>
             </div>
             <div class="event-item">
                 <span class="event-date">✅ أُنجزت - 3 ديسمبر 2025</span>
                 <h3>ندوة المنتدى الحوارية</h3>
-                <p>أولى ندواتنا الحوارية التي جمعت نخبة من العقول الشغوفة بالأدب، حيث تم طرح العديد من الرؤى النقدية وتبادل الأفكار في أجواء ثقافية مميزة أضافت الكثير لمسيرة المنتدى.</p>
-                <div class="event-location">📍 جامعة الموصل</div>
+                <p>أولى ندواتنا الحوارية التي جمعت نخبة من العقول الشغوفة بالأدب، حيث تم طرح العديد من الرؤى النقدية
+                    وتبادل الأفكار في أجواء ثقافية مميزة أضافت الكثير لمسيرة المنتدى.</p>
+                <div class="event-location">📍جامعة الموصل - كلية التربية</div>
             </div>
             <div class="event-item">
                 <span class="event-date">🚀 انطلاقة المنتدى - 25 مايو 2025</span>
                 <h3>الإطلاق الرسمي لمنتدى النص والقارئ</h3>
-                <p>اليوم الذي تُرجمت فيه الفكرة إلى واقع، وبدأنا فيه رسمياً رحلتنا لبناء مجتمع يجمع محبي القراءة، ليصبح منصة رائدة للإبداع والمناقشة.</p>
+                <p>اليوم الذي تُرجمت فيه الفكرة إلى واقع، وبدأنا فيه رسمياً رحلتنا لبناء مجتمع يجمع محبي القراءة، ليصبح
+                    منصة رائدة للإبداع والمناقشة.</p>
                 <div class="event-location">📍 انطلاقة إلكترونية وميدانية</div>
             </div>
         </div>
-        <div style="height: 300px;"></div> 
+        <div style="height: 300px;"></div>
     </main>
 
     <footer>
         <p>&copy; 2026 منتدى النص والقارئ. جميع الحقوق محفوظة.</p>
     </footer>
+
+    <script>
+        // التبديل للوضع الليلي
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            const btn = document.getElementById('darkModeBtn');
+            if (document.body.classList.contains('dark-mode')) {
+                btn.innerText = '☀️';
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                btn.innerText = '🌙';
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        }
+
+        // تطبيق الوضع الليلي المحفوظ عند تحميل الصفحة
+        window.onload = function () {
+            if (localStorage.getItem('darkMode') === 'enabled') {
+                document.body.classList.add('dark-mode');
+                document.getElementById('darkModeBtn').innerText = '☀️';
+            }
+        }
+    </script>
+    <script src="magic.js"></script>
 </body>
+
 </html>

@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2Q700NLG3D"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-2Q700NLG3D');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منتدى النص والقارئ - صوت الأعضاء</title>
+
+    <style>
+        /* التنسيقات العامة */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background-color: #f4f1ea;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* الترويسة */
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-content {
+            flex: 1;
+            text-align: right;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 32px;
+            font-weight: 700;
+            animation: textGlow 2.5s infinite alternate;
+        }
+
+        @keyframes textGlow {
+            0% {
+                text-shadow: 0 0 5px rgba(241, 196, 15, 0.2), 0 0 10px rgba(241, 196, 15, 0.2);
+            }
+
+            100% {
+                text-shadow: 0 0 10px rgba(241, 196, 15, 0.8), 0 0 20px rgba(241, 196, 15, 0.5), 0 0 30px rgba(241, 196, 15, 0.3);
+            }
+        }
+
+        header p {
+            margin: 5px 0 0;
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .logo-container {
+            width: 90px;
+            height: 90px;
+            margin-right: 20px;
+        }
+
+        .logo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        /* شريط التنقل */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 10px 5px;
+            background-color: rgba(211, 84, 0, 0.98);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 5px 10px;
+            padding: 8px 15px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 5px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: #2c3e50;
+            background-color: #f1c40f;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        main {
+            flex: 1;
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .page-title {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #d35400;
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
+        .blog-hero {
+            background: white;
+            padding: 40px;
+            text-align: center;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 40px;
+            border-top: 5px solid #d35400;
+        }
+
+        .blog-hero p {
+            font-size: 18px;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .share-btn {
+            background-color: #2c3e50;
+            color: white;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .share-btn:hover {
+            background-color: #f1c40f;
+            color: #2c3e50;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(241, 196, 15, 0.3);
+        }
+
+        /* شبكة المقالات */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+            border-bottom: 4px solid #2c3e50;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            border-bottom-color: #d35400;
+        }
+
+        .blog-card-content {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-title {
+            color: #d35400;
+            font-size: 20px;
+            margin: 0 0 10px;
+            font-weight: bold;
+        }
+
+        .blog-excerpt {
+            color: #555;
+            font-size: 15px;
+            line-height: 1.6;
+            margin: 0 0 20px;
+            flex: 1;
+        }
+
+        .blog-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+            margin-top: auto;
+        }
+
+        .blog-author {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .author-avatar {
+            width: 35px;
+            height: 35px;
+            background-color: #2c3e50;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .author-name {
+            font-size: 14px;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .blog-date {
+            font-size: 13px;
+            color: #888;
+        }
+
+        /* نافذة إضافة مقال (Modal) */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 85vh;
+            /* أقصى ارتفاع للنافذة لضمان بقائها داخل الشاشة */
+            overflow-y: auto;
+            /* تفعيل شريط التمرير العمودي عند الحاجة */
+            position: relative;
+            animation: fadeInUp 0.4s ease-out;
+            direction: rtl;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            left: 20px;
+            color: #aaa;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .close-btn:hover {
+            color: #d35400;
+        }
+
+        .modal-title {
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: inherit;
+            box-sizing: border-box;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #d35400;
+        }
+
+        .submit-btn {
+            background-color: #d35400;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+            transition: 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #e67e22;
+        }
+
+        footer {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        /* 🌙 الوضع الليلي */
+        .dark-mode-btn {
+            background: none;
+            border: none;
+            font-size: 22px;
+            cursor: pointer;
+            margin: 5px 10px;
+            padding: 5px;
+            transition: transform 0.3s;
+            color: white;
+        }
+
+        .dark-mode-btn:hover {
+            transform: scale(1.1);
+            color: #f1c40f;
+        }
+
+        body.dark-mode {
+            background-color: #2b3035;
+            color: #e9ecef;
+        }
+
+        body.dark-mode header,
+        body.dark-mode footer {
+            background-color: #212529;
+            border-bottom: 1px solid #495057;
+        }
+
+        body.dark-mode nav {
+            background-color: rgba(33, 37, 41, 0.98);
+            border-bottom: 1px solid #495057;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+        }
+
+        body.dark-mode .blog-hero {
+            background-color: #343a40;
+            border-top-color: #f1c40f;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        body.dark-mode .blog-hero p {
+            color: #ced4da;
+        }
+
+        body.dark-mode .page-title {
+            color: #f1c40f;
+            border-bottom-color: #f1c40f;
+        }
+
+        body.dark-mode .blog-card {
+            background-color: #343a40;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            border-bottom-color: #495057;
+        }
+
+        body.dark-mode .blog-card:hover {
+            border-bottom-color: #f1c40f;
+        }
+
+        body.dark-mode .blog-title {
+            color: #f1c40f;
+        }
+
+        body.dark-mode .blog-excerpt {
+            color: #ced4da;
+        }
+
+        body.dark-mode .author-name {
+            color: #e9ecef;
+        }
+
+        body.dark-mode .blog-meta {
+            border-top-color: #495057;
+        }
+
+        body.dark-mode .modal-content {
+            background-color: #343a40;
+            color: #e9ecef;
+        }
+
+        body.dark-mode .modal-title {
+            color: #f1c40f;
+            border-bottom-color: #495057;
+        }
+
+        body.dark-mode .form-group label {
+            color: #ced4da;
+        }
+
+        body.dark-mode input,
+        body.dark-mode textarea {
+            background-color: #212529;
+            color: #fff;
+            border-color: #495057;
+        }
+
+        body.dark-mode input:focus,
+        body.dark-mode textarea:focus {
+            border-color: #f1c40f;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding: 15px;
+            }
+
+            .logo-container {
+                margin: 0 auto 15px auto;
+            }
+
+            .header-content {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header-content">
+            <h1>منتدى النص والقارئ</h1>
+            <p>مساحتكم الثقافية للإبداع والمناقشة وتشارك الشغف</p>
+        </div>
+        <div class="logo-container">
+            <img src="logo.jpg" alt="شعار المنتدى" class="logo">
+        </div>
+    </header>
+
+    <nav>
+        <a href="index.html">الرئيسية</a>
+        <a href="events.html">الأنشطة والفعاليات</a>
+        <a href="blog.html" class="active">صوت الأعضاء (المدونة)</a>
+        <a href="contact.html">تواصل معنا</a>
+        <button id="darkModeBtn" class="dark-mode-btn" onclick="toggleDarkMode()">🌙</button>
+    </nav>
+
+    <main>
+        <div class="blog-hero">
+            <h2 class="page-title">صوت الأعضاء</h2>
+            <p>هنا تتلاقى الأفكار وتُدون القراءات. مساحة مفتوحة لأعضاء المنتدى لمشاركة مراجعاتهم للكتب، خواطرهم،
+                وانطباعاتهم النقدية. القراءة حياة، والكتابة خلود.</p>
+            <button class="share-btn" onclick="openBlogModal()">✍️ شاركنا قلمك الآن</button>
+        </div>
+
+        <div class="blog-grid">
+            <!-- Article 1 -->
+            <div class="blog-card">
+                <div class="blog-card-content">
+                    <h3 class="blog-title">تجربتي مع العادات الذرية</h3>
+                    <p class="blog-excerpt">لم أكن أتوقع أن تغييرات بسيطة جداً في يومي قد تصنع فارقاً مهولاً في حياتي
+                        الجامعية. هذا الكتاب غيّر نظرتي للنجاح كلياً...</p>
+                    <div class="blog-meta">
+                        <div class="blog-author">
+                            <div class="author-avatar"
+                                style="background-image: url('shaimaa-avatar.png'); background-size: cover; background-position: center;">
+                            </div>
+                            <span class="author-name">شيماء</span>
+                        </div>
+                        <span class="blog-date">5 مارس 2026</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Article 2 -->
+            <div class="blog-card">
+                <div class="blog-card-content">
+                    <h3 class="blog-title">لماذا "رجال في الشمس" اليوم؟</h3>
+                    <p class="blog-excerpt">عندما اقترحنا رواية رجال في الشمس للمناقشة، كنت أتساءل إن كانت لا تزال تعكس
+                        واقعنا. بعد القراءة، أدركت أن كنفاني كان يقرأ المستقبل...</p>
+                    <div class="blog-meta">
+                        <div class="blog-author">
+                            <div class="author-avatar"
+                                style="background-image: url('murad-avatar.png'); background-size: cover; background-position: center;">
+                            </div>
+                            <span class="author-name">مُراد الأحمد</span>
+                        </div>
+                        <span class="blog-date">28 فبراير 2026</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Article 3 -->
+            <div class="blog-card">
+                <div class="blog-card-content">
+                    <h3 class="blog-title">الهروب عبر "الليالي البيضاء"</h3>
+                    <p class="blog-excerpt">دستويفسكي لم يكتب رواية، بل عزف سيمفونية عن الوحدة. كيف يمكن للإنسان أن يجد
+                        الدفء في مدينة باردة وأرواح متعبة؟ قراءة في العمق النفسي...</p>
+                    <div class="blog-meta">
+                        <div class="blog-author">
+                            <div class="author-avatar"
+                                style="background-image: url('khawla-avatar.png'); background-size: cover; background-position: center;">
+                            </div>
+                            <span class="author-name">خولة</span>
+                        </div>
+                        <span class="blog-date">15 فبراير 2026</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Article 4 -->
+            <div class="blog-card">
+                <div class="blog-card-content">
+                    <h3 class="blog-title">هندسة الأفكار قبل المباني</h3>
+                    <p class="blog-excerpt">كل كتاب هو مشروع جديد لإعادة اكتشاف الذات. في جلستنا الأخيرة، تيقنت أن
+                        القارئ لا يستهلك النص، بل يعيد بناءه بفكره وتجربته الخاصة...</p>
+                    <div class="blog-meta">
+                        <div class="blog-author">
+                            <div class="author-avatar"
+                                style="background-image: url('mina-avatar.png'); background-size: cover; background-position: center;">
+                            </div>
+                            <span class="author-name">مينه</span>
+                        </div>
+                        <span class="blog-date">10 فبراير 2026</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 منتدى النص والقارئ. جميع الحقوق محفوظة.</p>
+    </footer>
+
+    <!-- نافذة المشاركة لمقال جديد -->
+    <div id="submitBlogModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeBlogModal()">&times;</span>
+            <h2 class="modal-title">شاركنا قلمك ✍️</h2>
+            <p style="margin-bottom: 20px; color: #555; line-height: 1.5;" id="modalDesc">هل لديك مراجعة لكتاب قرأته
+                مؤخراً؟ أو خاطرة أدبية تود أن يقرأها أصدقاؤك في المنتدى؟ أرسلها لنا الآن ليتم نشرها باسمك في هذه الصفحة!
+            </p>
+
+            <form id="blogForm" action="https://formspree.io/f/xdalveql" method="POST">
+                <!-- تخصيص الإيميل القادم -->
+                <input type="hidden" name="_subject" value="مقال جديد للمدونة من زائر لمنتدى النص والقارئ!">
+
+                <div class="form-group">
+                    <label for="authorName">الاسم الكريم:</label>
+                    <input type="text" id="authorName" name="Author_Name" placeholder="اكتب اسمك ليظهر كاتب للمقال"
+                        required>
+                </div>
+                <div class="form-group">
+                    <label for="articleTitle">عنوان المقال / المراجعة:</label>
+                    <input type="text" id="articleTitle" name="Article_Title" placeholder="عنوان ملفت وجميل" required>
+                </div>
+                <div class="form-group">
+                    <label for="articleContent">نص المقال:</label>
+                    <textarea id="articleContent" name="Article_Content" rows="8"
+                        placeholder="اكتب مراجعتك أو خاطرتك هنا، خذ وقتك وأبدع..." required></textarea>
+                </div>
+                <button type="submit" class="submit-btn" id="submitBtn">إرسال للمراجعة والنشر 🚀</button>
+            </form>
+            <div id="successMessage" style="display: none; text-align: center; color: #2c3e50; padding: 30px 10px;">
+                <h3 style="color: #27ae60; font-size: 24px;">تم الإرسال بنجاح! 🎉</h3>
+                <p style="font-size: 16px; margin-top: 10px;">شكراً لمشاركتك المميزة كعضو في منتدى النص والقارئ. سنراجع
+                    مقالك وننشره قريباً.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // التحكم في النافذة المنبثقة
+        function openBlogModal() {
+            document.getElementById('submitBlogModal').style.display = 'block';
+            document.getElementById('blogForm').style.display = 'block';
+            document.getElementById('successMessage').style.display = 'none';
+            document.getElementById('blogForm').reset();
+        }
+
+        function closeBlogModal() {
+            document.getElementById('submitBlogModal').style.display = 'none';
+        }
+
+        window.onclick = function (event) {
+            const modal = document.getElementById('submitBlogModal');
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // إرسال النموذج باستخدام AJAX
+        document.getElementById("blogForm").addEventListener("submit", async function (event) {
+            event.preventDefault(); // منع إعادة توجيه الصفحة الافتراضي
+
+            const form = event.target;
+            const submitBtn = document.getElementById("submitBtn");
+            const successMsg = document.getElementById("successMessage");
+
+            // تغيير حالة الزر أثناء الإرسال
+            submitBtn.disabled = true;
+            submitBtn.innerText = "جاري الإرسال... ⏳";
+            submitBtn.style.opacity = "0.7";
+
+            try {
+                const response = await fetch(form.action, {
+                    method: form.method,
+                    body: new FormData(form),
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (response.ok) {
+                    // إخفاء النموذج وإظهار رسالة النجاح
+                    form.style.display = "none";
+                    successMsg.style.display = "block";
+                } else {
+                    alert("عذراً، حدث خطأ أثناء الإرسال. يرجى المحاولة لاحقاً.");
+                    submitBtn.disabled = false;
+                    submitBtn.innerText = "إرسال للمراجعة والنشر 🚀";
+                    submitBtn.style.opacity = "1";
+                }
+            } catch (error) {
+                alert("تعذر الاتصال بالخادم. تأكد من اتصالك بالإنترنت.");
+                submitBtn.disabled = false;
+                submitBtn.innerText = "إرسال للمراجعة والنشر 🚀";
+                submitBtn.style.opacity = "1";
+            }
+        });
+
+        // التبديل للوضع الليلي
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            const btn = document.getElementById('darkModeBtn');
+            if (document.body.classList.contains('dark-mode')) {
+                btn.innerText = '☀️';
+                localStorage.setItem('darkMode', 'enabled');
+                document.getElementById('modalDesc').style.color = '#ced4da';
+            } else {
+                btn.innerText = '🌙';
+                localStorage.setItem('darkMode', 'disabled');
+                document.getElementById('modalDesc').style.color = '#555';
+            }
+        }
+
+        // تطبيق الوضع الليلي المحفوظ عند تحميل الصفحة
+        window.onload = function () {
+            if (localStorage.getItem('darkMode') === 'enabled') {
+                document.body.classList.add('dark-mode');
+                document.getElementById('darkModeBtn').innerText = '☀️';
+                document.getElementById('modalDesc').style.color = '#ced4da';
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -286,10 +286,46 @@
                 font-size: 14px;
             }
 
-            nav a {
-                font-size: 14px;
-                margin: 5px 3px;
-                padding: 8px 10px;
+            nav {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                padding: 10px 5px;
+                gap: 8px 4px;
+            }
+
+            nav a,
+            nav .dark-mode-btn {
+                margin: 0 !important;
+                padding: 8px 2px !important;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                box-sizing: border-box;
+                font-size: 13.5px;
+            }
+
+            nav a:nth-child(1) {
+                width: 35%;
+            }
+
+            nav a:nth-child(2) {
+                width: calc(65% - 4px);
+            }
+
+            nav a:nth-child(3) {
+                width: 45%;
+                font-size: 12px;
+            }
+
+            nav a:nth-child(4) {
+                width: 35%;
+            }
+
+            nav .dark-mode-btn {
+                width: calc(20% - 8px);
+                height: auto;
             }
 
             .contact-wrapper {
@@ -584,7 +620,7 @@
             }
         }
     </script>
-    <script src="magic.js"></script>
+    <script src="magic.js?v=2"></script>
 </body>
 
 </html>

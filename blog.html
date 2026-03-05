@@ -485,6 +485,48 @@
             .header-content {
                 text-align: center;
             }
+
+            nav {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                padding: 10px 5px;
+                gap: 8px 4px;
+            }
+
+            nav a,
+            .dark-mode-btn {
+                margin: 0 !important;
+                padding: 8px 2px !important;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                box-sizing: border-box;
+                font-size: 13.5px;
+            }
+
+            nav a:nth-child(1) {
+                width: 35%;
+            }
+
+            nav a:nth-child(2) {
+                width: calc(65% - 4px);
+            }
+
+            nav a:nth-child(3) {
+                width: 45%;
+                font-size: 12px;
+            }
+
+            nav a:nth-child(4) {
+                width: 35%;
+            }
+
+            nav .dark-mode-btn {
+                width: calc(20% - 8px);
+                height: auto;
+            }
         }
     </style>
 </head>

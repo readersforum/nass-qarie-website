@@ -957,6 +957,33 @@
         body.dark-mode #searchInput:focus {
             box-shadow: 0 0 10px rgba(241, 196, 15, 0.4);
         }
+
+        /* 📱 إصلاحات تجاوب الشاشات الصغيرة النهائية 📱 */
+        @media (max-width: 768px) {
+            .team-grid {
+                display: grid !important;
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 10px !important;
+                padding: 0 5px !important;
+            }
+
+            .team-card {
+                width: 100% !important;
+                margin: 0 !important;
+            }
+
+            .team-avatar {
+                width: 50px !important;
+                height: 50px !important;
+                font-size: 20px !important;
+                margin: 0 auto 8px auto !important;
+            }
+
+            nav a,
+            nav .dark-mode-btn {
+                min-height: 48px !important;
+            }
+        }
     </style>
 </head>
 
